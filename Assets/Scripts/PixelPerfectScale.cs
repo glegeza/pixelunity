@@ -4,12 +4,12 @@
 public class PixelPerfectScale : MonoBehaviour
 {
 	public int screenVerticalPixels;
+    public int PixelXOffset { get; set; }
+    public int PixelYOffset { get; set; }
+    public int TargetWidth = 0;
+    public int TargetHeight = 0;
 
-	public bool preferUncropped = true;
-
-	private float screenPixelsY = 0;
-	
-	private bool currentCropped = false;
+	private int screenPixelsY = 0;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class PixelPerfectScale : MonoBehaviour
 
 	void Update()
 	{
-		if(screenPixelsY != (float)Screen.height || currentCropped != preferUncropped)
+		if(screenPixelsY != (float)Screen.height)
 		{
             UpdateSize();
 		}
@@ -26,22 +26,17 @@ public class PixelPerfectScale : MonoBehaviour
 
     void UpdateSize()
     {
-        screenPixelsY = (float)Screen.height;
-        currentCropped = preferUncropped;
+        screenPixelsY = Screen.height;
+        var unitsPerPixel = 1.0f / screenPixelsY;
 
-        float screenRatio = screenPixelsY / screenVerticalPixels;
-        float ratio;
-
-        if (preferUncropped)
+        if (TargetWidth == 0 || TargetHeight == 0)
         {
-            ratio = Mathf.Floor(screenRatio) / screenRatio;
+            transform.localScale = new Vector3((float)Screen.width / Screen.height - (unitsPerPixel * PixelXOffset), 1.0f - (unitsPerPixel * PixelYOffset), 1.0f);
         }
         else
         {
-            ratio = Mathf.Ceil(screenRatio) / screenRatio;
+            transform.localScale = new Vector3((float)TargetWidth * unitsPerPixel, (float)TargetHeight * unitsPerPixel, 1.0f);
         }
-
-        transform.localScale = new Vector3((float)Screen.width / Screen.height, 1.0f, 1.0f);
         Debug.Log("Setting scale to " + transform.localScale);
     }
 }
