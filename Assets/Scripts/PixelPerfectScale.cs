@@ -3,7 +3,6 @@
 [ExecuteInEditMode]
 public class PixelPerfectScale : MonoBehaviour
 {
-	public int screenVerticalPixels;
     public int PixelXOffset { get; set; }
     public int PixelYOffset { get; set; }
     public int TargetWidth = 0;

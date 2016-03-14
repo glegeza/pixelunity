@@ -23,32 +23,61 @@ public class TestMaterialSwap : MonoBehaviour
     
 	void Start ()
     {
-        var targetSize = GetTargetScreenSize();
-        var targetWidth =  targetSize[0];
-        var targetHeight = targetSize[1];
+        //var targetSize = GetTargetScreenSize();
+        //var targetWidth =  targetSize[0];
+        //var targetHeight = targetSize[1];
         attachedCamera = GetComponent<Camera>();
-        var texture = GetNewTexture(targetWidth, targetHeight);
-        AttachTexture(texture);
-        Scaler.screenVerticalPixels = targetHeight;
-        if (Mode == ScalingMode.FixedPlayArea)
+        switch (Mode)
         {
-            Scaler.TargetWidth = (int)(TargetWidth * TargetScale);
-            Scaler.TargetHeight = (int)(TargetHeight * TargetScale);
-            attachedCamera.orthographicSize = ((float)targetHeight / PixelsPerUnit) / 2.0f;
-        }
-        else if (Mode == ScalingMode.BestFit)
-        {
-            Scaler.TargetWidth = (int)(TargetWidth * TargetScale);
-            Scaler.TargetHeight = (int)(TargetHeight * TargetScale);
-            attachedCamera.orthographicSize = ((float)TargetHeight / PixelsPerUnit) / 2.0f;
-        }
-        else
-        {
-            attachedCamera.orthographicSize = ((float)targetHeight / PixelsPerUnit) / 2.0f;
+            case ScalingMode.BestFit:
+                CreateBestFitCamera();
+                break;
+            case ScalingMode.FixedScale:
+                CreateFixedScaleCamera();
+                break;
+            default:
+                CreateFixedPlayAreaCamera();
+                break;
         }
         Scaler.PixelXOffset = XOffset;
         Scaler.PixelYOffset = YOffset;
 	}
+
+    private void CreateFixedScaleCamera()
+    {
+        var bestFitWidth = (int)(TargetScale * Mathf.Floor(Screen.width / TargetScale));
+        var bestFitHeight = (int)(TargetScale * Mathf.Floor(Screen.height / TargetScale));
+        var diffWidth = XOffset = Screen.width - bestFitWidth;
+        var diffHeight = YOffset = Screen.height - bestFitHeight;
+        Debug.Log(String.Format("{0} -> {1} [{2}]", Screen.width, bestFitWidth, diffWidth));
+        Debug.Log(String.Format("{0} -> {1} [{2}]", Screen.height, bestFitHeight, diffHeight));
+        SetTexture((int)(bestFitWidth / TargetScale), (int)(bestFitHeight / TargetScale));
+        attachedCamera.orthographicSize = ((float)bestFitHeight / PixelsPerUnit) / 2.0f;
+    }
+
+    private void CreateFixedPlayAreaCamera()
+    {
+        SetTexture(TargetWidth, TargetHeight);
+        Scaler.TargetWidth = (int)(TargetWidth * TargetScale);
+        Scaler.TargetHeight = (int)(TargetHeight * TargetScale);
+        attachedCamera.orthographicSize = ((float)TargetHeight / PixelsPerUnit) / 2.0f;
+    }
+
+    private void CreateBestFitCamera()
+    {
+        var bestScale = 1;
+        while (TargetWidth * bestScale < Screen.width && TargetHeight * bestScale < Screen.height)
+        {
+            bestScale += 1;
+        }
+        var bestWidth = bestScale * TargetWidth;
+        var bestHeight = bestScale * TargetHeight;
+        Debug.Log(String.Format("{0}x{1}", bestWidth, bestHeight));
+        SetTexture(TargetWidth, TargetHeight);
+        Scaler.TargetWidth = TargetWidth * bestScale;
+        Scaler.TargetHeight = TargetHeight * bestScale;
+        attachedCamera.orthographicSize = ((float)TargetHeight / PixelsPerUnit) / 2.0f;
+    }
 
     private int[] GetTargetScreenSize()
     {
@@ -107,6 +136,15 @@ public class TestMaterialSwap : MonoBehaviour
                     Screen.height
                 };
         } 
+    }
+
+    private void SetTexture(int textureWidth, int textureHeight)
+    {
+        Debug.Log(String.Format("Creating new render texture {0}x{1}", textureWidth, textureHeight));
+        var texture = new RenderTexture(textureWidth, textureHeight, 16);
+        texture.filterMode = SampleMode;
+        Quad.material.mainTexture = texture;
+        attachedCamera.targetTexture = texture;
     }
 
     private RenderTexture GetNewTexture(int targetWidth, int targetHeight)
