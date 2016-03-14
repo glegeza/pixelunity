@@ -14,6 +14,7 @@ public class TestMaterialSwap : MonoBehaviour
     public MeshRenderer Quad;
     public PixelPerfectScale Scaler;
 
+    private int MaxScale = 16;
     private Camera attachedCamera;
     private int RenderWidth;
     private int RenderHeight;
@@ -29,12 +30,22 @@ public class TestMaterialSwap : MonoBehaviour
         var texture = GetNewTexture(targetWidth, targetHeight);
         AttachTexture(texture);
         Scaler.screenVerticalPixels = targetHeight;
-        if (Mode == ScalingMode.FixedRenderResolution)
+        if (Mode == ScalingMode.FixedPlayArea)
         {
             Scaler.TargetWidth = (int)(TargetWidth * TargetScale);
             Scaler.TargetHeight = (int)(TargetHeight * TargetScale);
+            attachedCamera.orthographicSize = ((float)targetHeight / PixelsPerUnit) / 2.0f;
         }
-        attachedCamera.orthographicSize = ((float)targetHeight / PixelsPerUnit) / 2.0f;
+        else if (Mode == ScalingMode.BestFit)
+        {
+            Scaler.TargetWidth = (int)(TargetWidth * TargetScale);
+            Scaler.TargetHeight = (int)(TargetHeight * TargetScale);
+            attachedCamera.orthographicSize = ((float)TargetHeight / PixelsPerUnit) / 2.0f;
+        }
+        else
+        {
+            attachedCamera.orthographicSize = ((float)targetHeight / PixelsPerUnit) / 2.0f;
+        }
         Scaler.PixelXOffset = XOffset;
         Scaler.PixelYOffset = YOffset;
 	}
@@ -51,20 +62,51 @@ public class TestMaterialSwap : MonoBehaviour
         switch (Mode)
         {
             case ScalingMode.FixedScale:
-                // Find best fit
                 bestFitWidth = (int)(TargetScale * Mathf.Floor(baseWidth / TargetScale));
                 bestFitHeight = (int)(TargetScale * Mathf.Floor(baseHeight / TargetScale));
                 diffWidth = XOffset = baseWidth - bestFitWidth;
                 diffHeight = YOffset = baseHeight - bestFitHeight;
                 Debug.Log(String.Format("{0} -> {1} [{2}]", baseWidth, bestFitWidth, diffWidth));
                 Debug.Log(String.Format("{0} -> {1} [{2}]", baseHeight, bestFitHeight, diffHeight));
-                return new int[] { (int)(bestFitWidth / TargetScale), (int)(bestFitHeight / TargetScale) };
-            case ScalingMode.FixedScalePlayArea:
-                return new int[] { TargetWidth, TargetHeight };
-            case ScalingMode.BestFitScaleFixedPlayArea:
-                break;
-        }
-        return new int[] { Screen.width, Screen.height };
+                return new int[] 
+                {
+                    (int)(bestFitWidth / TargetScale),
+                    (int)(bestFitHeight / TargetScale)
+                };
+            case ScalingMode.FixedPlayArea:
+                return new int[] 
+                {
+                    TargetWidth,
+                    TargetHeight
+                };
+            case ScalingMode.BestFit:
+                bestFitWidth = TargetWidth;
+                bestFitHeight = TargetHeight;
+                TargetScale = 1;
+                for (var scale = 1; scale < MaxScale; scale++)
+                {
+                    var scaleWidth = TargetWidth * scale;
+                    var scaleHeight = TargetHeight * scale;
+                    if (scaleWidth > Screen.width || scaleHeight > Screen.height)
+                    {
+                        break;
+                    }
+                    TargetScale = scale;
+                    bestFitWidth = scaleWidth;
+                    bestFitHeight = scaleHeight;
+                }
+                return new int[]
+                {
+                    bestFitWidth,
+                    bestFitHeight
+                };
+            default:
+                return new int[]
+                {
+                    Screen.width,
+                    Screen.height
+                };
+        } 
     }
 
     private RenderTexture GetNewTexture(int targetWidth, int targetHeight)
@@ -73,11 +115,13 @@ public class TestMaterialSwap : MonoBehaviour
         var textureHeight = targetHeight;
         switch (Mode)
         {
-            case ScalingMode.FixedRenderResolution:
+            case ScalingMode.FixedPlayArea:
                 textureWidth = TargetWidth;
                 textureHeight = TargetHeight;
                 break;
             case ScalingMode.BestFit:
+                textureWidth = TargetWidth;
+                textureHeight = TargetWidth;
                 break;
             case ScalingMode.FixedScale:
             default:
