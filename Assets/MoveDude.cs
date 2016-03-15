@@ -3,6 +3,7 @@
 public class MoveDude : MonoBehaviour
 {
     public float Speed;
+    public float RotationSpeed;
     public float MoveTime;
 
     private float elapsedTime;
@@ -25,5 +26,6 @@ public class MoveDude : MonoBehaviour
             elapsedTime = 0.0f;
         }
         transform.position = new Vector3(xPos, yPos, zPos);
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.eulerAngles.z + RotationSpeed * Time.deltaTime);
     }
 }

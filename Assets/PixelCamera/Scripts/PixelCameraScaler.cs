@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts;
+using System.IO;
 
 [RequireComponent(typeof(Camera))]
 public class PixelCameraScaler : MonoBehaviour
@@ -15,6 +16,8 @@ public class PixelCameraScaler : MonoBehaviour
     private Camera _pixelCamera;
     private Camera _outputCamera;
     private int _screenPixelsY;
+    private RenderTexture _currentTexture;
+    private bool _shouldSave = false;
 
     private void Start()
     {
@@ -27,8 +30,26 @@ public class PixelCameraScaler : MonoBehaviour
         UpdateCameras();
     }
 
+    private void OnPostRender()
+    {
+        if (_shouldSave)
+        {
+            Texture2D texture = new Texture2D(_currentTexture.width, _currentTexture.height);
+            texture.ReadPixels(new Rect(0, 0, _currentTexture.width, _currentTexture.height), 0, 0);
+            texture.Apply();
+            var bytes = texture.EncodeToPNG();
+            File.WriteAllBytes(Application.dataPath + "/../SavedScreen.png", bytes);
+            Debug.LogFormat("Saved file");
+            _shouldSave = false;
+        }
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            _shouldSave = true;
+        }
         if (Mode != ScalingMode.FixedPlayArea && _screenPixelsY != Screen.height)
         {
             Debug.LogFormat("Updating PixelCamera...\nOld screen height was {0}.\nNew resolution is {1}x{2}.",
@@ -41,7 +62,15 @@ public class PixelCameraScaler : MonoBehaviour
 
     private void FindOutputCameraAndSurface()
     {
-        _outputCamera = GetComponentInChildren<Camera>();
+        foreach (Transform child in transform)
+        {
+            var cam = child.gameObject.GetComponent<Camera>();
+            if (cam)
+            {
+                _outputCamera = cam;
+                break;
+            }
+        }
         _outputQuad = _outputCamera.GetComponentInChildren<MeshRenderer>();
     }
 
@@ -71,12 +100,12 @@ public class PixelCameraScaler : MonoBehaviour
     {
         Debug.LogFormat("Creating fixed scale camera at {0}x...", TargetScale);
 
-        var bestFitWidth = (int)(TargetScale * Mathf.Floor(Screen.width / (float)TargetScale));
-        var bestFitHeight = (int)(TargetScale * Mathf.Floor(Screen.height / (float)TargetScale));
+        var bestFitWidth = (int)(TargetScale * Mathf.Round(Screen.width / (float)TargetScale));
+        var bestFitHeight = (int)(TargetScale * Mathf.Round(Screen.height / (float)TargetScale));
         var textureWidth = bestFitWidth / TargetScale;
         var textureHeight = bestFitHeight / TargetScale;
         SetTexture(textureWidth, textureHeight);
-        _pixelCamera.orthographicSize = ((float)textureHeight / PixelsPerUnit) / 2.0f;
+        SetOrthoSize(((float)textureHeight / PixelsPerUnit) / 2.0f);
         UpdateRenderQuad(bestFitWidth, bestFitHeight);
     }
 
@@ -94,7 +123,7 @@ public class PixelCameraScaler : MonoBehaviour
         Debug.LogFormat("Final output will be {0}x{1}", TargetWidth * TargetScale, TargetHeight * TargetScale);
         SetTexture(TargetWidth, TargetHeight);
 
-        _pixelCamera.orthographicSize = ((float)TargetHeight / PixelsPerUnit) / 2.0f;
+        SetOrthoSize(((float)TargetHeight / PixelsPerUnit) / 2.0f);
         UpdateRenderQuad(TargetWidth * TargetScale, TargetHeight * TargetScale);
     }
 
@@ -120,24 +149,37 @@ public class PixelCameraScaler : MonoBehaviour
         Debug.LogFormat("Best fit scale is {0}x", bestScale);
         Debug.LogFormat("Final output resolution will be {0}x{1}", bestWidth, bestHeight);
         SetTexture(TargetWidth, TargetHeight);
-        _pixelCamera.orthographicSize = ((float)TargetHeight / PixelsPerUnit) / 2.0f;
+        SetOrthoSize(((float)TargetHeight / PixelsPerUnit) / 2.0f);
         UpdateRenderQuad(TargetWidth * bestScale, TargetHeight * bestScale);
+    }
+
+    private void SetOrthoSize(float size)
+    {
+        _pixelCamera.orthographicSize = size;
     }
 
     private void SetTexture(int textureWidth, int textureHeight)
     {
         Debug.LogFormat("Creating new {0}x{1} render texture", textureWidth, textureHeight);
-
+        if (_currentTexture)
+        {
+            Destroy(_currentTexture);
+            _currentTexture = null;
+        }
         var texture = new RenderTexture(textureWidth, textureHeight, 16);
         texture.filterMode = SampleMode;
         _outputQuad.material.mainTexture = texture;
         _pixelCamera.targetTexture = texture;
+        _currentTexture = texture;
     }
 
     private void UpdateRenderQuad(float widthPixels, float heightPixels)
     {
-        var unitsPerPixel = 1.0f / Screen.height;
-        _outputQuad.transform.localScale = new Vector3(widthPixels * unitsPerPixel, heightPixels * unitsPerPixel, 1.0f);
+        float y = Screen.height;
+        float x = Screen.width;
+        var ortho = x / (((x / y) * 2.0f) * 1.0f);
+        _outputCamera.orthographicSize = ortho;
+        _outputQuad.transform.localScale = new Vector3(widthPixels, heightPixels, 1.0f);
         Debug.LogFormat("Setting quad scale to {0}", _outputQuad.transform.localScale);
     }
 }

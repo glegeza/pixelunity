@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d8953433132eb6342a8c7e9fe628dd1c
-timeCreated: 1456773929
+timeCreated: 1458064890
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -455,7 +455,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -505,8 +505,8 @@ TextureImporter:
         y: 187
         width: 16
         height: 16
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: roguelikeChar_transparent_1
