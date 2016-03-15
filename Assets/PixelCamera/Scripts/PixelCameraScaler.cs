@@ -102,8 +102,8 @@ public class PixelCameraScaler : MonoBehaviour
     /// Sets the offscreen pixel camera to render at TargetWidth x TargetHeight
     /// and scales up as much as possible for screen resolution. The viewable
     /// area in world units is guaranteed to be the same as what is shown in
-    /// the editor and the final output will never may be cropped. The output
-    /// may, however, be letterboxed (possibly on all sides).
+    /// the editor and the final output will never be cropped. The output may
+    /// be letterboxed (possibly on all sides).
     /// </summary>
     private void CreateBestFitCamera()
     {
