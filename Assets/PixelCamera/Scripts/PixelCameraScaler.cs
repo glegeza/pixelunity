@@ -10,8 +10,7 @@ public class PixelCameraScaler : MonoBehaviour
     public int PixelsPerUnit;
     public ScalingMode Mode;
     public FilterMode SampleMode = FilterMode.Point;
-
-    private int MaxScale = 16;
+    
     private MeshRenderer _outputQuad;
     private Camera _pixelCamera;
     private Camera _outputCamera;
