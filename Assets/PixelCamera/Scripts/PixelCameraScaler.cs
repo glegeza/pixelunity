@@ -15,8 +15,8 @@ public class PixelCameraScaler : MonoBehaviour
     private Camera _pixelCamera;
     private Camera _outputCamera;
     private int _screenPixelsY;
-    
-	private void Start ()
+
+    private void Start()
     {
         Debug.LogFormat("Initializing PixelCamera...\nScreen resolution is {0}x{1}.",
             Screen.width, Screen.height);
@@ -25,7 +25,7 @@ public class PixelCameraScaler : MonoBehaviour
         _screenPixelsY = Screen.height;
         FindOutputCameraAndSurface();
         UpdateCameras();
-	}
+    }
 
     private void Update()
     {
