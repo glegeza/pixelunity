@@ -77,7 +77,7 @@ public class PixelCameraScaler : MonoBehaviour
         var textureHeight = bestFitHeight / TargetScale;
         SetTexture(textureWidth, textureHeight);
         _pixelCamera.orthographicSize = ((float)textureHeight / PixelsPerUnit) / 2.0f;
-        UpdateRenderQuad(textureWidth, textureHeight);
+        UpdateRenderQuad(bestFitWidth, bestFitHeight);
     }
 
     /// <summary>
