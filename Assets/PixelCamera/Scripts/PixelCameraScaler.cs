@@ -14,8 +14,6 @@ public class PixelCameraScaler : MonoBehaviour
     private MeshRenderer _outputQuad;
     private Camera _pixelCamera;
     private Camera _outputCamera;
-    private int _xOffset;
-    private int _yOffset;
     private int _screenPixelsY;
     
 	private void Start ()
@@ -77,8 +75,6 @@ public class PixelCameraScaler : MonoBehaviour
         var bestFitHeight = (int)(TargetScale * Mathf.Floor(Screen.height / (float)TargetScale));
         var textureWidth = bestFitWidth / TargetScale;
         var textureHeight = bestFitHeight / TargetScale;
-        var diffWidth = _xOffset = Screen.width - bestFitWidth;
-        var diffHeight = _yOffset = Screen.height - bestFitHeight;
         SetTexture(textureWidth, textureHeight);
         _pixelCamera.orthographicSize = ((float)textureHeight / PixelsPerUnit) / 2.0f;
         UpdateRenderQuad(textureWidth, textureHeight);
@@ -141,7 +137,6 @@ public class PixelCameraScaler : MonoBehaviour
     private void UpdateRenderQuad(float widthPixels, float heightPixels)
     {
         var unitsPerPixel = 1.0f / Screen.height;
-        var aspectRatio = widthPixels / heightPixels;
         _outputQuad.transform.localScale = new Vector3(widthPixels * unitsPerPixel, heightPixels * unitsPerPixel, 1.0f);
         Debug.LogFormat("Setting quad scale to {0}", _outputQuad.transform.localScale);
     }
