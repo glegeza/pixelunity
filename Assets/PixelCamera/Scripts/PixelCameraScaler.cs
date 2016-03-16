@@ -176,19 +176,30 @@ public class PixelCameraScaler : MonoBehaviour
 
     private void UpdateRenderQuad(float widthPixels, float heightPixels)
     {
+        // Set orthographic size of output camera
         float y = Screen.height;
         float x = Screen.width;
         var ortho = x / (((x / y) * 2.0f) * 1.0f);
         _outputCamera.orthographicSize = ortho;
+
+        // Scale output quad
         _outputQuad.transform.localScale = new Vector3(widthPixels, heightPixels, 1.0f);
+        Debug.LogFormat("Setting quad scale to {0}", _outputQuad.transform.localScale);
+
+        // Check if the screen width/height are odd and move the output quad
+        // by half a pixel to keep it on pixel boundaries
+        float xQuadPos = 0.0f;
+        float yQuadPos = 0.0f;
+        float zQuadPos = 1.0f;
         if (Screen.height % 2 != 0)
         {
-            _outputQuad.transform.localPosition = new Vector3(-0.0f, 0.5f, 1.0f);
+            yQuadPos = 0.5f;
         }
-        else
+        if (Screen.width % 2 != 0)
         {
-            _outputQuad.transform.localPosition = new Vector3(-0.0f, 0.0f, 1.0f);
+            xQuadPos = -0.5f;
         }
-        Debug.LogFormat("Setting quad scale to {0}", _outputQuad.transform.localScale);
+        _outputQuad.transform.localPosition = new Vector3(xQuadPos, yQuadPos, zQuadPos);
+        Debug.LogFormat("Setting quad position to {0}", _outputQuad.transform.localPosition);
     }
 }
