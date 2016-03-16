@@ -180,6 +180,14 @@ public class PixelCameraScaler : MonoBehaviour
         var ortho = x / (((x / y) * 2.0f) * 1.0f);
         _outputCamera.orthographicSize = ortho;
         _outputQuad.transform.localScale = new Vector3(widthPixels, heightPixels, 1.0f);
+        if (Screen.height % 2 != 0)
+        {
+            _outputQuad.transform.localPosition = new Vector3(-0.0f, 0.5f, 1.0f);
+        }
+        else
+        {
+            _outputQuad.transform.localPosition = new Vector3(-0.0f, 0.0f, 1.0f);
+        }
         Debug.LogFormat("Setting quad scale to {0}", _outputQuad.transform.localScale);
     }
 }
