@@ -5,11 +5,17 @@ using System.IO;
 [RequireComponent(typeof(Camera))]
 public class PixelCameraScaler : MonoBehaviour
 {
+    [Tooltip("The amount of scaling applied to final output.")]
     public int Scale;
+    [Tooltip("The width used by the offscreen render target. Ignored in FixedScale mode.")]
     public int OffscreenWidth;
+    [Tooltip("The height used by the offscreen render target. Ignored in FixedScale mode.")]
     public int OffscreenHeight;
+    [Tooltip("The Pixels Per Unit value used by sprites that will be displayed in the scene.")]
     public int PixelsPerUnit;
+    [Tooltip("The type of scaling to apply. FixedScale is the only mode that will expand the play area.")]
     public ScalingMode Mode;
+    [Tooltip("The filter mode to apply when scaling the offscreen render texture.")]
     public FilterMode SampleMode = FilterMode.Point;
     
     private int _screenPixelsY;
