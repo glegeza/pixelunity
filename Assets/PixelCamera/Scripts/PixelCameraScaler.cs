@@ -12,10 +12,11 @@ public class PixelCameraScaler : MonoBehaviour
     public ScalingMode Mode;
     public FilterMode SampleMode = FilterMode.Point;
     
+    private int _screenPixelsY;
+    private int _screenPixelsX;
     private MeshRenderer _outputQuad;
     private Camera _pixelCamera;
     private Camera _outputCamera;
-    private int _screenPixelsY;
     private RenderTexture _currentTexture;
     private bool _shouldSave = false;
 
@@ -25,7 +26,6 @@ public class PixelCameraScaler : MonoBehaviour
             Screen.width, Screen.height);
 
         _pixelCamera = GetComponent<Camera>();
-        _screenPixelsY = Screen.height;
         FindOutputCameraAndSurface();
         UpdateCameras();
     }
@@ -50,13 +50,12 @@ public class PixelCameraScaler : MonoBehaviour
         {
             _shouldSave = true;
         }
-        if (_screenPixelsY != Screen.height)
+        if (_screenPixelsY != Screen.height || _screenPixelsX != Screen.width)
         {
             Debug.LogFormat("Updating PixelCamera...\nOld screen height was {0}.\nNew resolution is {1}x{2}.",
                 _screenPixelsY, Screen.width, Screen.height);
 
             UpdateCameras();
-            _screenPixelsY = Screen.height;
         }
     }
 
@@ -88,6 +87,8 @@ public class PixelCameraScaler : MonoBehaviour
                 CreateFixedPlayAreaCamera();
                 break;
         }
+        _screenPixelsY = Screen.height;
+        _screenPixelsX = Screen.width;
     }
 
     /// <summary>
