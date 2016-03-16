@@ -100,8 +100,8 @@ public class PixelCameraScaler : MonoBehaviour
     {
         Debug.LogFormat("Creating fixed scale camera at {0}x...", TargetScale);
 
-        var bestFitWidth = (int)(TargetScale * Mathf.Round(Screen.width / (float)TargetScale));
-        var bestFitHeight = (int)(TargetScale * Mathf.Round(Screen.height / (float)TargetScale));
+        var bestFitWidth = (int)(TargetScale * Mathf.Floor(Screen.width / (float)TargetScale));
+        var bestFitHeight = (int)(TargetScale * Mathf.Floor(Screen.height / (float)TargetScale));
         var textureWidth = bestFitWidth / TargetScale;
         var textureHeight = bestFitHeight / TargetScale;
         SetTexture(textureWidth, textureHeight);
