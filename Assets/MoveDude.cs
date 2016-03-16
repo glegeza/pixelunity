@@ -6,24 +6,33 @@ public class MoveDude : MonoBehaviour
     public float RotationSpeed;
     public float MoveTime;
 
-    private float elapsedTime;
-    private float currentSpeed;
+    private float _elapsedtime;
+    private float _currentSpeed;
+    private bool _moving = true;
 	
     void Start()
     {
-        currentSpeed = Speed;
+        _currentSpeed = Speed;
     }
     
 	void Update ()
     {
-        elapsedTime += Time.deltaTime;
-        var xPos = transform.position.x + currentSpeed * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _moving = !_moving;
+        }
+        if (!_moving)
+        {
+            return;
+        }
+        _elapsedtime += Time.deltaTime;
+        var xPos = transform.position.x + _currentSpeed * Time.deltaTime;
         var yPos = transform.position.y;
         var zPos = transform.position.z;
-        if (elapsedTime > MoveTime)
+        if (_elapsedtime > MoveTime)
         {
-            currentSpeed *= -1;
-            elapsedTime = 0.0f;
+            _currentSpeed *= -1;
+            _elapsedtime = 0.0f;
         }
         transform.position = new Vector3(xPos, yPos, zPos);
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.eulerAngles.z + RotationSpeed * Time.deltaTime);
