@@ -5,9 +5,9 @@ using System.IO;
 [RequireComponent(typeof(Camera))]
 public class PixelCameraScaler : MonoBehaviour
 {
-    public int TargetScale;
-    public int TargetWidth;
-    public int TargetHeight;
+    public int Scale;
+    public int OffscreenWidth;
+    public int OffscreenHeight;
     public int PixelsPerUnit;
     public ScalingMode Mode;
     public FilterMode SampleMode = FilterMode.Point;
@@ -81,14 +81,27 @@ public class PixelCameraScaler : MonoBehaviour
                 CreateBestFitCamera();
                 break;
             case ScalingMode.FixedScale:
+                CheckScale();
                 CreateFixedScaleCamera();
                 break;
             default:
+                CheckScale();
                 CreateFixedPlayAreaCamera();
                 break;
         }
         _screenPixelsY = Screen.height;
         _screenPixelsX = Screen.width;
+    }
+
+
+    private void CheckScale()
+    {
+        if (Scale < 1)
+        {
+            Debug.LogErrorFormat("FixedPlayArea and FixedScale require Scale greater than 0. Scale is set to {0}.", Scale);
+            Debug.LogFormat("Setting scale to 1.");
+            Scale = 1;
+        }
     }
 
     /// <summary>
@@ -99,12 +112,12 @@ public class PixelCameraScaler : MonoBehaviour
     /// </summary>
     private void CreateFixedScaleCamera()
     {
-        Debug.LogFormat("Creating fixed scale camera at {0}x...", TargetScale);
+        Debug.LogFormat("Creating fixed scale camera at {0}x...", Scale);
 
-        var bestFitWidth = (int)(TargetScale * Mathf.Floor(Screen.width / (float)TargetScale));
-        var bestFitHeight = (int)(TargetScale * Mathf.Floor(Screen.height / (float)TargetScale));
-        var textureWidth = bestFitWidth / TargetScale;
-        var textureHeight = bestFitHeight / TargetScale;
+        var bestFitWidth = (int)(Scale * Mathf.Floor(Screen.width / (float)Scale));
+        var bestFitHeight = (int)(Scale * Mathf.Floor(Screen.height / (float)Scale));
+        var textureWidth = bestFitWidth / Scale;
+        var textureHeight = bestFitHeight / Scale;
         SetTexture(textureWidth, textureHeight);
         SetOrthoSize(((float)textureHeight / PixelsPerUnit) / 2.0f);
         UpdateRenderQuad(bestFitWidth, bestFitHeight);
@@ -120,12 +133,12 @@ public class PixelCameraScaler : MonoBehaviour
     private void CreateFixedPlayAreaCamera()
     {
         Debug.LogFormat("Creating fixed play area camera at {0}x{1} {2}x...",
-            TargetWidth, TargetHeight, TargetScale);
-        Debug.LogFormat("Final output will be {0}x{1}", TargetWidth * TargetScale, TargetHeight * TargetScale);
-        SetTexture(TargetWidth, TargetHeight);
+            OffscreenWidth, OffscreenHeight, Scale);
+        Debug.LogFormat("Final output will be {0}x{1}", OffscreenWidth * Scale, OffscreenHeight * Scale);
+        SetTexture(OffscreenWidth, OffscreenHeight);
 
-        SetOrthoSize(((float)TargetHeight / PixelsPerUnit) / 2.0f);
-        UpdateRenderQuad(TargetWidth * TargetScale, TargetHeight * TargetScale);
+        SetOrthoSize(((float)OffscreenHeight / PixelsPerUnit) / 2.0f);
+        UpdateRenderQuad(OffscreenWidth * Scale, OffscreenHeight * Scale);
     }
 
     /// <summary>
@@ -138,20 +151,22 @@ public class PixelCameraScaler : MonoBehaviour
     private void CreateBestFitCamera()
     {
         Debug.LogFormat("Creating best fit camera with render target resolution of {0}x{1}...",
-            TargetWidth, TargetHeight);
+            OffscreenWidth, OffscreenHeight);
 
         var bestScale = 0;
-        while (TargetWidth * (bestScale + 1) < Screen.width && TargetHeight * (bestScale + 1) < Screen.height)
+        while (OffscreenWidth * (bestScale + 1) < Screen.width && 
+            OffscreenHeight * (bestScale + 1) < Screen.height && 
+            (Scale < 1 || bestScale <= Scale))
         {
             bestScale += 1;
         }
-        var bestWidth = bestScale * TargetWidth;
-        var bestHeight = bestScale * TargetHeight;
+        var bestWidth = bestScale * OffscreenWidth;
+        var bestHeight = bestScale * OffscreenHeight;
         Debug.LogFormat("Best fit scale is {0}x", bestScale);
         Debug.LogFormat("Final output resolution will be {0}x{1}", bestWidth, bestHeight);
-        SetTexture(TargetWidth, TargetHeight);
-        SetOrthoSize(((float)TargetHeight / PixelsPerUnit) / 2.0f);
-        UpdateRenderQuad(TargetWidth * bestScale, TargetHeight * bestScale);
+        SetTexture(OffscreenWidth, OffscreenHeight);
+        SetOrthoSize(((float)OffscreenHeight / PixelsPerUnit) / 2.0f);
+        UpdateRenderQuad(OffscreenWidth * bestScale, OffscreenHeight * bestScale);
     }
 
     private void SetOrthoSize(float size)
