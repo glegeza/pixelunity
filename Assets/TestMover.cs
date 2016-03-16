@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MoveDude : MonoBehaviour
+public class TestMover : MonoBehaviour
 {
     public float Speed;
     public float RotationSpeed;
