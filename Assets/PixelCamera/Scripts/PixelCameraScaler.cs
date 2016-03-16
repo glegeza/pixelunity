@@ -50,7 +50,7 @@ public class PixelCameraScaler : MonoBehaviour
         {
             _shouldSave = true;
         }
-        if (Mode != ScalingMode.FixedPlayArea && _screenPixelsY != Screen.height)
+        if (_screenPixelsY != Screen.height)
         {
             Debug.LogFormat("Updating PixelCamera...\nOld screen height was {0}.\nNew resolution is {1}x{2}.",
                 _screenPixelsY, Screen.width, Screen.height);
