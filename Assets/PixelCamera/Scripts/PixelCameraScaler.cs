@@ -232,11 +232,13 @@ public class PixelCameraScaler : MonoBehaviour
         float xQuadPos = 0.0f;
         float yQuadPos = 0.0f;
         float zQuadPos = 1.0f;
-        if (Screen.height % 2 != 0)
+        if ((Screen.height % 2 != 0 && (int)heightPixels % 2 == 0) ||
+            Screen.height % 2 == 0 & (int)heightPixels % 2 != 0)
         {
             yQuadPos = 0.5f;
         }
-        if (Screen.width % 2 != 0)
+        if ((Screen.width % 2 != 0 && (int)widthPixels % 2 == 0) ||
+            Screen.width % 2 == 0 & (int)widthPixels % 2 != 0)
         {
             xQuadPos = 0.5f;
         }
