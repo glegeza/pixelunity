@@ -9,10 +9,13 @@ public class TestMover : MonoBehaviour
     
     private float _currentSpeed;
     private bool _moving = true;
+    private Vector2 _worldSize;
 	
     void Start()
     {
         _currentSpeed = Speed;
+        var pixelSize = GetComponent<SpriteRenderer>().sprite.rect.size;
+        _worldSize = new Vector2(pixelSize.x / PixelsPerUnit, pixelSize.y / PixelsPerUnit);
     }
     
 	void Update ()
@@ -32,11 +35,11 @@ public class TestMover : MonoBehaviour
         var leftBound = -rightBound;
         var topBound = (PixelCamera.pixelHeight / PixelsPerUnit) / 2.0f;
         var bottomBound = -topBound;
-        if (transform.position.x < leftBound)
+        if (transform.position.x - _worldSize.x / 2.0f < leftBound)
         {
             _currentSpeed = Speed;
         }
-        else if (transform.position.x > rightBound)
+        else if (transform.position.x + _worldSize.x / 2.0f > rightBound)
         {
             _currentSpeed = -Speed;
         }
