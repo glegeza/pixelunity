@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using Assets.Scripts;
 using System.IO;
 
@@ -26,11 +27,24 @@ public class PixelCameraScaler : MonoBehaviour
     private RenderTexture _currentTexture;
     private bool _shouldSave = false;
 
+    public void ForceUpdate(Dropdown target)
+    {
+        Scale = target.value + 1;
+        UpdateCameras();
+    }
+
     private void Start()
     {
         Debug.LogFormat("Initializing PixelCamera...\nScreen resolution is {0}x{1}.",
             Screen.width, Screen.height);
 
+        _pixelCamera = GetComponent<Camera>();
+        FindOutputCameraAndSurface();
+        UpdateCameras();
+    }
+
+    private void OnValidate()
+    {
         _pixelCamera = GetComponent<Camera>();
         FindOutputCameraAndSurface();
         UpdateCameras();
@@ -58,8 +72,8 @@ public class PixelCameraScaler : MonoBehaviour
         }
         if (_screenPixelsY != Screen.height || _screenPixelsX != Screen.width)
         {
-            Debug.LogFormat("Updating PixelCamera...\nOld screen height was {0}.\nNew resolution is {1}x{2}.",
-                _screenPixelsY, Screen.width, Screen.height);
+            Debug.LogFormat("Updating PixelCamera...\nOld resolution was {0}x{1}.\nNew resolution is {2}x{3}.",
+                _screenPixelsX, _screenPixelsY, Screen.width, Screen.height);
 
             UpdateCameras();
         }
@@ -125,7 +139,7 @@ public class PixelCameraScaler : MonoBehaviour
         var textureWidth = bestFitWidth / Scale;
         var textureHeight = bestFitHeight / Scale;
         SetTexture(textureWidth, textureHeight);
-        SetOrthoSize(((float)textureHeight / PixelsPerUnit) / 2.0f);
+        _pixelCamera.orthographicSize = ((float)textureHeight / PixelsPerUnit) / 2.0f;
         UpdateRenderQuad(bestFitWidth, bestFitHeight);
     }
 
@@ -143,7 +157,7 @@ public class PixelCameraScaler : MonoBehaviour
         Debug.LogFormat("Final output will be {0}x{1}", OffscreenWidth * Scale, OffscreenHeight * Scale);
         SetTexture(OffscreenWidth, OffscreenHeight);
 
-        SetOrthoSize(((float)OffscreenHeight / PixelsPerUnit) / 2.0f);
+        _pixelCamera.orthographicSize = ((float)OffscreenHeight / PixelsPerUnit) / 2.0f;
         UpdateRenderQuad(OffscreenWidth * Scale, OffscreenHeight * Scale);
     }
 
@@ -171,23 +185,24 @@ public class PixelCameraScaler : MonoBehaviour
         Debug.LogFormat("Best fit scale is {0}x", bestScale);
         Debug.LogFormat("Final output resolution will be {0}x{1}", bestWidth, bestHeight);
         SetTexture(OffscreenWidth, OffscreenHeight);
-        SetOrthoSize(((float)OffscreenHeight / PixelsPerUnit) / 2.0f);
+        _pixelCamera.orthographicSize = ((float)OffscreenHeight / PixelsPerUnit) / 2.0f;
         UpdateRenderQuad(OffscreenWidth * bestScale, OffscreenHeight * bestScale);
-    }
-
-    private void SetOrthoSize(float size)
-    {
-        _pixelCamera.orthographicSize = size;
     }
 
     private void SetTexture(int textureWidth, int textureHeight)
     {
-        Debug.LogFormat("Creating new {0}x{1} render texture", textureWidth, textureHeight);
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+
         if (_currentTexture)
         {
+            Debug.LogFormat("Destroying old render texture.");
             Destroy(_currentTexture);
             _currentTexture = null;
         }
+        Debug.LogFormat("Creating new {0}x{1} render texture", textureWidth, textureHeight);
         var texture = new RenderTexture(textureWidth, textureHeight, 16);
         texture.filterMode = SampleMode;
         _outputQuad.material.mainTexture = texture;
@@ -197,6 +212,11 @@ public class PixelCameraScaler : MonoBehaviour
 
     private void UpdateRenderQuad(float widthPixels, float heightPixels)
     {
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+
         // Set orthographic size of output camera
         float y = Screen.height;
         float x = Screen.width;
@@ -218,9 +238,10 @@ public class PixelCameraScaler : MonoBehaviour
         }
         if (Screen.width % 2 != 0)
         {
-            xQuadPos = -0.5f;
+            xQuadPos = 0.5f;
         }
         _outputQuad.transform.localPosition = new Vector3(xQuadPos, yQuadPos, zQuadPos);
         Debug.LogFormat("Setting quad position to {0}", _outputQuad.transform.localPosition);
+        Debug.LogFormat("Texture Resolution: {0}x{1}, Screen Resolution: {2}x{3}", widthPixels, heightPixels, Screen.width, Screen.height);
     }
 }
