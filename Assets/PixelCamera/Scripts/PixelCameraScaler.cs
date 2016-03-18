@@ -18,12 +18,14 @@ public class PixelCameraScaler : MonoBehaviour
     public ScalingMode Mode;
     [Tooltip("The filter mode to apply when scaling the offscreen render texture.")]
     public FilterMode SampleMode = FilterMode.Point;
-    
+    [Tooltip("The camera to output the scaled scene to.")]
+    public Camera OutputCamera;
+
     private int _screenPixelsY;
     private int _screenPixelsX;
     private MeshRenderer _outputQuad;
     private Camera _pixelCamera;
-    private Camera _outputCamera;
+    
     private RenderTexture _currentTexture;
     private bool _shouldSave = false;
 
@@ -81,16 +83,12 @@ public class PixelCameraScaler : MonoBehaviour
 
     private void FindOutputCameraAndSurface()
     {
-        foreach (Transform child in transform)
+        if (!OutputCamera)
         {
-            var cam = child.gameObject.GetComponent<Camera>();
-            if (cam)
-            {
-                _outputCamera = cam;
-                break;
-            }
+            _outputQuad = null;
+            return;
         }
-        _outputQuad = _outputCamera.GetComponentInChildren<MeshRenderer>();
+        _outputQuad = OutputCamera.GetComponentInChildren<MeshRenderer>();        
     }
 
     private void UpdateCameras()
@@ -221,7 +219,7 @@ public class PixelCameraScaler : MonoBehaviour
         float y = Screen.height;
         float x = Screen.width;
         var ortho = x / (((x / y) * 2.0f) * 1.0f);
-        _outputCamera.orthographicSize = ortho;
+        OutputCamera.orthographicSize = ortho;
 
         // Scale output quad
         _outputQuad.transform.localScale = new Vector3(widthPixels, heightPixels, 1.0f);

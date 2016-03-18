@@ -2,13 +2,12 @@
 
 public class RepeatingBackground : MonoBehaviour
 {
-    public Camera PixelCamera;
+    public int Width;
+    public int Height;
     public GameObject RepeatingTile;
     public int PixelsPerUnit;
 
     private Vector2 _worldSize;
-    private int _screenPixelsY;
-    private int _screenPixelsX;
 
 	void Start ()
     {
@@ -16,27 +15,11 @@ public class RepeatingBackground : MonoBehaviour
         _worldSize = new Vector2(pixelSize.width / PixelsPerUnit, pixelSize.height / PixelsPerUnit);
         RecreateBackground();
 	}
-	
-	void Update ()
-    {
-        if (_screenPixelsY != PixelCamera.pixelHeight || _screenPixelsX != PixelCamera.pixelWidth)
-        {
-            RecreateBackground();
-        }
-	}
 
     void RecreateBackground()
-    {
-        // Remove all existing tiles
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        var cameraWidth = (float)PixelCamera.pixelWidth / PixelsPerUnit / 2.0f;
-        var cameraHeight = (float)PixelCamera.pixelHeight / PixelsPerUnit / 2.0f;
-        var startX = -cameraWidth + _worldSize.x / 2.0f;
-        var startY = cameraHeight - _worldSize.y / 2.0f + (1.0f / PixelsPerUnit);
+    {        
+        var startX = -(Width * _worldSize.x) / 2.0f + _worldSize.x / 2.0f;
+        var startY = (Height * _worldSize.y) / 2.0f - _worldSize.y / 2.0f;
         var x = startX;
         var y = startY;
         do
@@ -44,18 +27,15 @@ public class RepeatingBackground : MonoBehaviour
             GameObject tile = Instantiate(RepeatingTile, new Vector3(x, y, RepeatingTile.transform.position.z), RepeatingTile.transform.rotation) as GameObject;
             tile.transform.SetParent(transform);
             x += _worldSize.x;
-            if (x - _worldSize.x / 2.0f > cameraWidth)
+            if (x - _worldSize.x / 2.0f > (Width * _worldSize.x) / 2.0f)
             {
                 x = startX;
                 y -= _worldSize.y;
             }
-            if (y + _worldSize.y / 2.0f < -cameraHeight)
+            if (y + _worldSize.y / 2.0f < -(Height * _worldSize.y) / 2.0f)
             {
                 break;
             }
         } while (true);
-
-        _screenPixelsX = PixelCamera.pixelWidth;
-        _screenPixelsY = PixelCamera.pixelHeight;
     }
 }
