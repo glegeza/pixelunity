@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using Assets.Scripts;
 using System.IO;
 
@@ -29,9 +28,8 @@ public class PixelCameraScaler : MonoBehaviour
     private RenderTexture _currentTexture;
     private bool _shouldSave = false;
 
-    public void ForceUpdate(Dropdown target)
+    public void ForceUpdate()
     {
-        Scale = target.value + 1;
         UpdateCameras();
     }
 
