@@ -2,8 +2,9 @@
 
 public class CameraMover : MonoBehaviour
 {
+    public Transform Camera;
     public float Speed;
-    public Rect CameraBounds;
+    public Rect Bounds;
 
     private Vector2 _curSpeed;
     
@@ -40,28 +41,28 @@ public class CameraMover : MonoBehaviour
             _curSpeed.x = 0.0f;
         }
 
-        var x = transform.position.x + _curSpeed.x * Time.deltaTime;
-        var y = transform.position.y + _curSpeed.y * Time.deltaTime;
-        var z = transform.position.z;
+        var x = Camera.position.x + _curSpeed.x * Time.deltaTime;
+        var y = Camera.position.y + _curSpeed.y * Time.deltaTime;
+        var z = Camera.position.z;
 
-        if (x < CameraBounds.xMin)
+        if (x < Bounds.xMin)
         {
-            x = CameraBounds.xMin;
+            x = Bounds.xMin;
             _curSpeed.x = 0.0f;
         }
-        if (x > CameraBounds.xMax)
+        if (x > Bounds.xMax)
         {
-            x = CameraBounds.xMax;
+            x = Bounds.xMax;
             _curSpeed.x = 0.0f;
         }
-        if (y > CameraBounds.yMax)
+        if (y > Bounds.yMax)
         {
-            y = CameraBounds.yMax;
+            y = Bounds.yMax;
             _curSpeed.y = 0.0f;
         }
-        if (y < CameraBounds.yMin)
+        if (y < Bounds.yMin)
         {
-            y = CameraBounds.yMin;
+            y = Bounds.yMin;
             _curSpeed.y = 0.0f;
         }
 
@@ -70,7 +71,7 @@ public class CameraMover : MonoBehaviour
             x = y = 0.0f;
         }
 
-        transform.position = new Vector3(x, y, z);
+        Camera.position = new Vector3(x, y, z);
 
     }
 }
