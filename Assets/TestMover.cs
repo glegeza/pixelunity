@@ -10,12 +10,16 @@ public class TestMover : MonoBehaviour
     private float _currentSpeed;
     private bool _moving = true;
     private Vector2 _worldSize;
+    private MouseObjectTracker _tracker;
+    private SpriteRenderer _spriteRenderer;
 	
     void Start()
     {
-        _currentSpeed = Speed;
         var pixelSize = GetComponent<SpriteRenderer>().sprite.rect.size;
+        _currentSpeed = Speed;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _worldSize = new Vector2(pixelSize.x / PixelsPerUnit, pixelSize.y / PixelsPerUnit);
+        _tracker = FindObjectOfType<MouseObjectTracker>();
     }
     
 	void Update ()
@@ -45,5 +49,13 @@ public class TestMover : MonoBehaviour
         }
         transform.position = new Vector3(xPos, yPos, zPos);
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.eulerAngles.z + RotationSpeed * Time.deltaTime);
+        if (_tracker.CurrentObject == gameObject)
+        {
+            _spriteRenderer.color = Color.red;
+        }
+        else
+        {
+            _spriteRenderer.color = Color.white;
+        }
     }
 }
