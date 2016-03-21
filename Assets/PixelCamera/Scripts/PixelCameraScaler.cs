@@ -20,6 +20,10 @@ public class PixelCameraScaler : MonoBehaviour
     [Tooltip("The camera to output the scaled scene to.")]
     public Camera OutputCamera;
 
+    public int CurrentScale { get; private set; }
+
+    public Transform OutputQuad { get { return _outputQuad.transform; } }
+
     private int _screenPixelsY;
     private int _screenPixelsX;
     private MeshRenderer _outputQuad;
@@ -137,6 +141,7 @@ public class PixelCameraScaler : MonoBehaviour
         SetTexture(textureWidth, textureHeight);
         _pixelCamera.orthographicSize = ((float)textureHeight / PixelsPerUnit) / 2.0f;
         UpdateRenderQuad(bestFitWidth, bestFitHeight);
+        CurrentScale = Scale;
     }
 
     /// <summary>
@@ -155,6 +160,7 @@ public class PixelCameraScaler : MonoBehaviour
 
         _pixelCamera.orthographicSize = ((float)OffscreenHeight / PixelsPerUnit) / 2.0f;
         UpdateRenderQuad(OffscreenWidth * Scale, OffscreenHeight * Scale);
+        CurrentScale = Scale;
     }
 
     /// <summary>
@@ -183,6 +189,7 @@ public class PixelCameraScaler : MonoBehaviour
         SetTexture(OffscreenWidth, OffscreenHeight);
         _pixelCamera.orthographicSize = ((float)OffscreenHeight / PixelsPerUnit) / 2.0f;
         UpdateRenderQuad(OffscreenWidth * bestScale, OffscreenHeight * bestScale);
+        CurrentScale = bestScale;
     }
 
     private void SetTexture(int textureWidth, int textureHeight)
