@@ -7,18 +7,18 @@ public class PixelMouse : MonoBehaviour
     private PixelCameraScaler _scaler;
     private Camera _camera;
 
+    private Vector3 _rawMousePos = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector2 _screenMousePos = new Vector2(0.0f, 0.0f);
+    private Vector3 _worldMousePos = new Vector3(0.0f, 0.0f, 0.0f);
+
     public Vector3 GetMouseWorldLocation()
     {
-        var mousePos = GetFloatScreenPos();
-        return _camera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, _camera.nearClipPlane));
+        return _worldMousePos;
     }
 
     public Vector2 GetMouseScreenLocation()
     {
-        var floatPos = GetFloatScreenPos();
-        floatPos.x = (int)floatPos.x;
-        floatPos.y = (int)floatPos.y;
-        return floatPos;
+        return _screenMousePos;
     }
 
 	private void Start ()
@@ -27,7 +27,12 @@ public class PixelMouse : MonoBehaviour
         _camera = GetComponent<Camera>();
 	}
 
-    private Vector2 GetFloatScreenPos()
+    private void Update()
+    {
+        UpdateMousePos();
+    }
+
+    private void UpdateMousePos()
     {
         var pixelsPerUnitScreen = _scaler.OutputCamera.orthographicSize * 2 / Screen.height;
         var quadPixelWidth = _scaler.OutputQuad.localScale.x / pixelsPerUnitScreen;
@@ -36,8 +41,11 @@ public class PixelMouse : MonoBehaviour
         var yOffset = (Screen.height - quadPixelHeight) / 2.0f;
 
         var mousePos = Input.mousePosition;
-        mousePos.x = Mathf.Clamp(((mousePos.x - xOffset) / _scaler.CurrentScale), 0.0f, quadPixelWidth);
-        mousePos.y = Mathf.Clamp(((mousePos.y - yOffset) / _scaler.CurrentScale), 0.0f, quadPixelHeight);
-        return mousePos;
+        _rawMousePos.x = Mathf.Clamp(((mousePos.x - xOffset) / _scaler.CurrentScale), 0.0f, quadPixelWidth);
+        _rawMousePos.y = Mathf.Clamp(((mousePos.y - yOffset) / _scaler.CurrentScale), 0.0f, quadPixelHeight);
+        _rawMousePos.z = _camera.nearClipPlane;
+        _screenMousePos.x = (int)_rawMousePos.x;
+        _screenMousePos.y = (int)_rawMousePos.y;
+        _worldMousePos = _camera.ScreenToWorldPoint(_rawMousePos);
     }
 }
