@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MouseObjectTracker : MonoBehaviour
 {
-
     private PixelMouse _mouse;
+    private PixelCameraScaler _scaler;
 
     public GameObject CurrentObject { get; private set; }
 
@@ -12,17 +12,23 @@ public class MouseObjectTracker : MonoBehaviour
 	void Start ()
     {
         _mouse = FindObjectOfType<PixelMouse>();
+        _scaler = _mouse.GetComponent<PixelCameraScaler>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        RaycastHit2D hit = Physics2D.Raycast(_mouse.GetMouseWorldLocation(), Vector2.zero);
+        var mousePos = _mouse.GetMouseWorldLocation();
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-        if (hit.collider != null)
+        if (hit.collider != null && !(hit.collider is BoxCollider2D))
         {
             CurrentObject = hit.collider.gameObject;
             Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
+        }
+        else if (hit.collider != null)
+        {
+            CurrentObject = hit.collider.gameObject;
         }
         else
         {
