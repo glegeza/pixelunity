@@ -28,6 +28,14 @@ public class TestMover : MonoBehaviour
         {
             _moving = !_moving;
         }
+        if (_tracker.CurrentObject == gameObject)
+        {
+            _spriteRenderer.color = Color.red;
+        }
+        else
+        {
+            _spriteRenderer.color = Color.white;
+        }
         if (!_moving)
         {
             return;
@@ -49,13 +57,5 @@ public class TestMover : MonoBehaviour
         }
         transform.position = new Vector3(xPos, yPos, zPos);
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.eulerAngles.z + RotationSpeed * Time.deltaTime);
-        if (_tracker.CurrentObject == gameObject)
-        {
-            _spriteRenderer.color = Color.red;
-        }
-        else
-        {
-            _spriteRenderer.color = Color.white;
-        }
     }
 }
