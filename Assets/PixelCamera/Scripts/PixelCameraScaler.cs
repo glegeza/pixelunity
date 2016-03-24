@@ -32,6 +32,33 @@ public class PixelCameraScaler : MonoBehaviour
     private RenderTexture _currentTexture;
     private bool _shouldSave = false;
 
+    public Vector2 WorldToPixelPoint(Vector2 pos)
+    {
+        return WorldToPixelPoint(pos.x, pos.y);
+    }
+
+    public Vector2 WorldToPixelPoint(float worldX, float worldY)
+    {
+        var heightOffset = Mathf.FloorToInt(_pixelCamera.orthographicSize * PixelsPerUnit);
+        var widthOffset = _pixelCamera.pixelWidth / 2;
+        var x = Mathf.FloorToInt(worldX * PixelsPerUnit) + widthOffset;
+        var y = Mathf.FloorToInt(worldY * PixelsPerUnit) + heightOffset;
+        return new Vector2(x, y);
+    }
+
+    public Vector2 ConvertToPixels(Vector2 pos)
+    {
+        return ConvertToPixels(pos.x, pos.y);
+    }
+
+    public Vector2 ConvertToPixels(float x, float y)
+    {
+        return new Vector2(
+            Mathf.FloorToInt(x * PixelsPerUnit),
+            Mathf.FloorToInt(y * PixelsPerUnit)
+            );
+    }
+
     public void ForceUpdate()
     {
         UpdateCameras();
@@ -112,7 +139,6 @@ public class PixelCameraScaler : MonoBehaviour
         _screenPixelsY = Screen.height;
         _screenPixelsX = Screen.width;
     }
-
 
     private void CheckScale()
     {

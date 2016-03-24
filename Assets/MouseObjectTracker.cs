@@ -26,7 +26,7 @@ public class MouseObjectTracker : MonoBehaviour
             CurrentObject = hit.collider.gameObject;
             Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
         }
-        else if (hit.collider != null)
+        else if (hit.collider != null && hit.collider is BoxCollider2D)
         {
             CurrentObject = hit.collider.gameObject;
         }
