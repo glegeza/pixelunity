@@ -32,6 +32,15 @@ public class PixelCameraScaler : MonoBehaviour
     private RenderTexture _currentTexture;
     private bool _shouldSave = false;
 
+    public Vector2 RoundToPixelBoundary(Vector2 worldPos)
+    {
+        var original = worldPos;
+        worldPos.x = Mathf.FloorToInt(worldPos.x * PixelsPerUnit) / (float)PixelsPerUnit;
+        worldPos.y = Mathf.FloorToInt(worldPos.y * PixelsPerUnit) / (float)PixelsPerUnit;
+        Debug.LogFormat("Rounded {0},{1} to {2},{3}", original.x, original.y, worldPos.x, worldPos.y);
+        return worldPos;
+    }
+
     public Vector2 WorldToPixelPoint(Vector2 pos)
     {
         return WorldToPixelPoint(pos.x, pos.y);
