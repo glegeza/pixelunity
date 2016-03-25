@@ -21,12 +21,7 @@ public class MouseObjectTracker : MonoBehaviour
         var mousePos = _mouse.GetMouseWorldLocation();
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-        if (hit.collider != null && !(hit.collider is BoxCollider2D))
-        {
-            CurrentObject = hit.collider.gameObject;
-            Debug.Log("Target Position: " + hit.collider.gameObject.transform.position);
-        }
-        else if (hit.collider != null && hit.collider is BoxCollider2D)
+        if (hit.collider != null)
         {
             CurrentObject = hit.collider.gameObject;
         }
