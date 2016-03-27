@@ -34,7 +34,7 @@ public class TileDropper : MonoBehaviour
         var selectedTile = SelectedTile;
         if (RandomTile)
         {
-            selectedTile = Random.Range(0, TilePrefabs.Count - 1);
+            selectedTile = Random.Range(0, TilePrefabs.Count);
         }
         var newTile = Instantiate(TilePrefabs[selectedTile]) as GameObject;
         var location = _mouse.GetMouseWorldLocation();
