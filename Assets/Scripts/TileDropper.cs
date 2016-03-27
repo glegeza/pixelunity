@@ -5,7 +5,9 @@ public class TileDropper : MonoBehaviour
 {
     public KeyCode DropKey;
     public KeyCode ResetKey;
-    public GameObject TilePrefab;
+    public List<GameObject> TilePrefabs;
+    public int SelectedTile = 0;
+    public bool RandomTile = true;
 
     private PixelMouse _mouse;
     private List<GameObject> _tiles = new List<GameObject>();
@@ -29,7 +31,12 @@ public class TileDropper : MonoBehaviour
 
     private void DropAtLocation()
     {
-        var newTile = Instantiate(TilePrefab) as GameObject;
+        var selectedTile = SelectedTile;
+        if (RandomTile)
+        {
+            selectedTile = Random.Range(0, TilePrefabs.Count - 1);
+        }
+        var newTile = Instantiate(TilePrefabs[selectedTile]) as GameObject;
         var location = _mouse.GetMouseWorldLocation();
         location.z = newTile.transform.position.z;
         newTile.transform.position = location;
