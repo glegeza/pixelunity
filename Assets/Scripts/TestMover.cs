@@ -28,14 +28,6 @@ public class TestMover : MonoBehaviour
         {
             _moving = !_moving;
         }
-        if (_tracker.CurrentObject == gameObject)
-        {
-            _spriteRenderer.color = Color.red;
-        }
-        else
-        {
-            _spriteRenderer.color = Color.white;
-        }
         if (!_moving)
         {
             return;
