@@ -21,6 +21,10 @@ public class PixelCameraScaler : MonoBehaviour
     public Camera OutputCamera;
 
     public int CurrentScale { get; private set; }
+    public int OutputWidth { get; private set; }
+    public int OutputHeight { get; private set; }
+    public int OutputOffsetX { get; private set; }
+    public int OutputOffsetY { get; private set; }
 
     public Transform OutputQuad { get { return _outputQuad.transform; } }
 
