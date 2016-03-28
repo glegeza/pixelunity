@@ -24,7 +24,7 @@ public class TileDropperController : MonoBehaviour
 	
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0) && _tracker.CurrentObject == null)
+        if (Input.GetMouseButton(0) && _tracker.CurrentObject == null)
         {
             SpawnObject();
         }

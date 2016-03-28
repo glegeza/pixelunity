@@ -45,7 +45,7 @@ public class PixelMouse : MonoBehaviour
         _rawMousePos.y = Mathf.Clamp(((mousePos.y - yOffset) / _scaler.CurrentScale), 0.0f, quadPixelHeight);
         _rawMousePos.z = _camera.nearClipPlane;
         _screenMousePos.x = (int)_rawMousePos.x;
-        _screenMousePos.y = (int)_rawMousePos.y;
+        _screenMousePos.y = (int)_rawMousePos.y - 1;
         _worldMousePos = _camera.ScreenToWorldPoint(_rawMousePos);
     }
 }

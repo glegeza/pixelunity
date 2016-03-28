@@ -19,6 +19,7 @@ public class MouseObjectTracker : MonoBehaviour
 	void Update ()
     {
         var mousePos = _mouse.GetMouseWorldLocation();
+        mousePos = _scaler.RoundToPixelBoundary(mousePos);
         RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
         if (hit.collider != null)
