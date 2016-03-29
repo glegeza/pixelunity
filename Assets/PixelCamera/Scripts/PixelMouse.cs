@@ -34,18 +34,18 @@ public class PixelMouse : MonoBehaviour
 
     private void UpdateMousePos()
     {
-        var pixelsPerUnitScreen = _scaler.OutputCamera.orthographicSize * 2 / Screen.height;
-        var quadPixelWidth = _scaler.OutputQuad.localScale.x / pixelsPerUnitScreen;
-        var quadPixelHeight = _scaler.OutputQuad.localScale.y / pixelsPerUnitScreen;
-        var xOffset = (Screen.width - quadPixelWidth) / 2.0f;
-        var yOffset = (Screen.height - quadPixelHeight) / 2.0f;
-
+        // Clamp the mouse position to within the output quad's bounds
         var mousePos = Input.mousePosition;
-        _rawMousePos.x = Mathf.Clamp(((mousePos.x - xOffset) / _scaler.CurrentScale), 0.0f, quadPixelWidth);
-        _rawMousePos.y = Mathf.Clamp(((mousePos.y - yOffset) / _scaler.CurrentScale), 0.0f, quadPixelHeight);
+        mousePos.x = Mathf.Clamp((int)mousePos.x - _scaler.OutputOffsetX, 0, _scaler.OutputWidth - 1);
+        mousePos.y = Mathf.Clamp((int)mousePos.y - _scaler.OutputOffsetY, 0, _scaler.OutputHeight - 1);
+
+        // Scale the mouse position down to get its pixel coordinate over the render texture
+        _rawMousePos.x = (int)mousePos.x / _scaler.CurrentScale;
+        _rawMousePos.y = (int)mousePos.y / _scaler.CurrentScale;
         _rawMousePos.z = _camera.nearClipPlane;
         _screenMousePos.x = (int)_rawMousePos.x;
-        _screenMousePos.y = (int)_rawMousePos.y - 1;
+        _screenMousePos.y = (int)_rawMousePos.y;
+
         _worldMousePos = _camera.ScreenToWorldPoint(_rawMousePos);
     }
 }

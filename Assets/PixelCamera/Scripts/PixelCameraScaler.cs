@@ -38,8 +38,8 @@ public class PixelCameraScaler : MonoBehaviour
 
     public Vector2 RoundToPixelBoundary(Vector2 worldPos)
     {
-        worldPos.x = Mathf.RoundToInt(worldPos.x * PixelsPerUnit) / (float)PixelsPerUnit;
-        worldPos.y = Mathf.RoundToInt(worldPos.y * PixelsPerUnit) / (float)PixelsPerUnit;
+        worldPos.x = Mathf.FloorToInt(worldPos.x * PixelsPerUnit) / (float)PixelsPerUnit;
+        worldPos.y = Mathf.FloorToInt(worldPos.y * PixelsPerUnit) / (float)PixelsPerUnit;
         return worldPos;
     }
 
@@ -246,8 +246,8 @@ public class PixelCameraScaler : MonoBehaviour
         _outputQuad.material.mainTexture = texture;
         _pixelCamera.targetTexture = texture;
         _currentTexture = texture;
-        OutputWidth = OffscreenWidth * CurrentScale;
-        OutputHeight = OffscreenHeight * CurrentScale;
+        OutputWidth = textureWidth * CurrentScale;
+        OutputHeight = textureHeight * CurrentScale;
     }
 
     private void UpdateRenderQuad(float widthPixels, float heightPixels)
@@ -293,9 +293,14 @@ public class PixelCameraScaler : MonoBehaviour
         {
             yQuadPos -= 0.5f;
         }
+        OutputOffsetX = (Screen.width - OutputWidth) / 2;
+        var heightDiff = Screen.height - OutputHeight;
+        OutputOffsetY = heightDiff % 2 == 0 ?
+            heightDiff / 2 : (heightDiff / 2) + 1;
 
         _outputQuad.transform.localPosition = new Vector3(xQuadPos, yQuadPos, zQuadPos);
         Debug.LogFormat("Setting quad position to {0}", _outputQuad.transform.localPosition);
         Debug.LogFormat("Texture Resolution: {0}x{1}, Screen Resolution: {2}x{3}", widthPixels, heightPixels, Screen.width, Screen.height);
+        Debug.LogFormat("Quad pixel offset {0}x{1}", OutputOffsetX, OutputOffsetY);
     }
 }

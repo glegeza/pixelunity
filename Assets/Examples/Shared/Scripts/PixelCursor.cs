@@ -19,11 +19,8 @@ public class PixelCursor : MonoBehaviour
         {
             return;
         }
-        var screenPos = _mouse.GetMouseScreenLocation();
         var worldPos = _mouse.GetMouseWorldLocation();
-        var roundedPos = _scaler.RoundToPixelBoundary(worldPos);
         transform.position = new Vector3
-            (roundedPos.x, roundedPos.y, transform.position.z);
-        Debug.LogFormat("Mouse Position {0}, {1}", screenPos.x, screenPos.y);
+            (worldPos.x, worldPos.y, transform.position.z);
 	}
 }
