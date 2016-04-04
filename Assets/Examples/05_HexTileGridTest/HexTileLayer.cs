@@ -19,8 +19,8 @@ public class HexTileLayer : MonoBehaviour
     private void LayTiles()
     {
         var r = TileWidth * 0.5f;
-        var s = r * 1.15470053838f;
-        var h = s * 0.5f;
+        var s = r * 1.15470053838f; // s = r * Sec(30*)
+        var h = s * 0.5f; // h = s * Sin(30*)
         var incr = s + h;
         Debug.LogFormat("s: {0}, h: {1}", s, h);
         for (var x = 0; x < GridWidth; x++)
