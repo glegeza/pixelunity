@@ -6,6 +6,7 @@ public class MouseObjectTracker : MonoBehaviour
     private PixelMouse _mouse;
     private PixelCameraScaler _scaler;
 
+    public bool Announce = true;
     public GameObject CurrentObject { get; private set; }
     
 	void Start ()
@@ -21,10 +22,18 @@ public class MouseObjectTracker : MonoBehaviour
 
         if (hit.collider != null)
         {
+            if (Announce && hit.collider.gameObject != CurrentObject)
+            {
+                Debug.Log(hit.collider.gameObject.name);
+            }
             CurrentObject = hit.collider.gameObject;
         }
         else
         {
+            if (Announce && CurrentObject != null)
+            {
+                Debug.Log("Mouse not over an object.");
+            }
             CurrentObject = null;
         }
     }
