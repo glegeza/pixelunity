@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class MouseObjectTracker : MonoBehaviour
 {
@@ -18,21 +17,21 @@ public class MouseObjectTracker : MonoBehaviour
 	void Update ()
     {
         var mousePos = _mouse.GetMouseWorldLocation();
-        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+        var collider = Physics2D.OverlapPoint(mousePos);
 
-        if (hit.collider != null)
+        if (collider != null)
         {
-            if (Announce && hit.collider.gameObject != CurrentObject)
+            if (Announce && collider.gameObject != CurrentObject)
             {
-                Debug.Log(hit.collider.gameObject.name);
+                Debug.LogFormat("Mouse target: {0}", collider.gameObject.name);
             }
-            CurrentObject = hit.collider.gameObject;
+            CurrentObject = collider.gameObject;
         }
         else
         {
             if (Announce && CurrentObject != null)
             {
-                Debug.Log("Mouse not over an object.");
+                Debug.Log("Mouse target: None.");
             }
             CurrentObject = null;
         }

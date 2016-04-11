@@ -40,12 +40,13 @@ public class PixelMouse : MonoBehaviour
         mousePos.y = Mathf.Clamp((int)mousePos.y - _scaler.OutputOffsetY, 0, _scaler.OutputHeight - 1);
 
         // Scale the mouse position down to get its pixel coordinate over the render texture
-        _rawMousePos.x = (int)mousePos.x / _scaler.CurrentScale;
-        _rawMousePos.y = (int)mousePos.y / _scaler.CurrentScale;
+        _rawMousePos.x = mousePos.x / _scaler.CurrentScale;
+        _rawMousePos.y = mousePos.y / _scaler.CurrentScale;
         _rawMousePos.z = _camera.nearClipPlane;
-        _screenMousePos.x = (int)_rawMousePos.x;
-        _screenMousePos.y = (int)_rawMousePos.y;
+        _screenMousePos.x = (int)(_rawMousePos.x);
+        _screenMousePos.y = (int)(_rawMousePos.y);
 
-        _worldMousePos = _camera.ScreenToWorldPoint(_rawMousePos);
+        _worldMousePos = _camera.ScreenToWorldPoint(_screenMousePos);
+        Debug.LogFormat("World mouse position {0}, {1}", _worldMousePos.x, _worldMousePos.y);
     }
 }
