@@ -47,6 +47,5 @@ public class PixelMouse : MonoBehaviour
         _screenMousePos.y = (int)(_rawMousePos.y);
 
         _worldMousePos = _camera.ScreenToWorldPoint(_screenMousePos);
-        Debug.LogFormat("World mouse position {0}, {1}", _worldMousePos.x, _worldMousePos.y);
     }
 }
