@@ -4,7 +4,6 @@ using System.Linq;
 
 public class InfiniteSpawner : MonoBehaviour
 {
-
     public float CullTime = 1.0f;
     public float PopulateMin = 2.0f;
     public float MinSpawnDistance = 35.0f;
@@ -92,6 +91,8 @@ public class InfiniteSpawner : MonoBehaviour
                 }
             }
         } while (!foundPlacement);
+        var dirVec = Random.insideUnitCircle.normalized;
         asteroid.SetActive(true);
+        asteroid.GetComponent<Rigidbody2D>().AddForce(dirVec * Random.Range(1.0f, 5.0f), ForceMode2D.Impulse);
     }
 }
