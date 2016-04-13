@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class InfiniteSpawner : MonoBehaviour
 {
 
     public float CullTime = 1.0f;
-    public float CullDistance = 25.0f;
-    public float SpawnCone = 30.0f;
-    public int PoolSize = 30;
+    public float PopulateMin = 2.0f;
+    public float MinSpawnDistance = 35.0f;
+    public float MaxSpawnDistance = 60.0f;
+    public int PoolSize = 120;
     public List<GameObject> AsteroidTypes = new List<GameObject>();
     public Transform Player;
 
-    private List<GameObject> _asteroidList = new List<GameObject>();
-    private int _activeAsteroids = 0;
-    private int _inactiveAsteroids = 0;
+    private List<GameObject> _asteroids = new List<GameObject>();
     private float _timeSinceCull = 0.0f;
 
 	private void Start ()
     {
         GeneratePool();
-        PlaceAsteroids();
+        PlaceAsteroids(true);
 	}
 	
 	private void Update ()
@@ -29,51 +29,69 @@ public class InfiniteSpawner : MonoBehaviour
         {
             CullAsteroids();
             PlaceAsteroids();
+            _timeSinceCull = 0.0f;
         }
 	}
 
     private void CullAsteroids()
     {
-        var culled = 0;
-        for (var i = 0; i < _activeAsteroids; i++)
+        foreach (var roid in _asteroids.Where(a => a.activeSelf))
         {
-            var asteroid = _asteroidList[i];
-            if (Vector2.Distance(asteroid.transform.position, Player.transform.position) > CullDistance)
+            if (Vector2.Distance(Player.position, roid.transform.position) > MaxSpawnDistance)
             {
-                culled += 1;
-                _asteroidList[PoolSize + _inactiveAsteroids] = asteroid;
-                asteroid.SetActive(false);
-                _inactiveAsteroids += 1;
+                Debug.Log("Clearing asteroid");
+                roid.SetActive(false);
+                break;
             }
         }
-        _activeAsteroids -= culled;
     }
 
     private void GeneratePool()
     {
-        _asteroidList = new List<GameObject>(PoolSize * 2);
-        _activeAsteroids = 0;
+        _asteroids.Clear();
         for (var i = 0; i < PoolSize; i++)
         {
-            var asteroid = Instantiate(AsteroidTypes[Random.Range(0, AsteroidTypes.Count)]);
-            asteroid.SetActive(false);
-            _asteroidList.Add(asteroid);
+            var newRoid = Instantiate(AsteroidTypes[Random.Range(0, AsteroidTypes.Count)]);
+            newRoid.SetActive(false);
+            _asteroids.Add(newRoid);
         }
-        _inactiveAsteroids = PoolSize;
     }
 
-    private void PlaceAsteroids()
+    private void PlaceAsteroids(bool populate=false)
     {
-        while (_activeAsteroids != PoolSize)
+        foreach (var roid in _asteroids.Where(a => !a.activeSelf))
         {
-            PlaceNextAsteroid();
+            PlaceAsteroid(roid, populate);
         }
     }
 
-    private void PlaceNextAsteroid()
+    private void PlaceAsteroid(GameObject asteroid, bool populate)
     {
-        var nextAsteroid = _asteroidList[_activeAsteroids];
-        nextAsteroid.SetActive(true);
-        _activeAsteroids += 1;
+        var foundPlacement = false;
+        var min = populate ? PopulateMin : MinSpawnDistance;
+        var asteroidRadius = asteroid.GetComponent<ExclusionRadius>();
+        do
+        {
+            var playerAngle = Mathf.Atan2(Player.transform.up.y, Player.transform.up.x);
+            var angle = Random.Range(-Mathf.PI, Mathf.PI) + playerAngle;
+            var position = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * Random.Range(min, MaxSpawnDistance);
+            asteroid.transform.position = new Vector3(position.x + Player.position.x, position.y + Player.position.y, asteroid.transform.position.z);
+            var collider = asteroid.GetComponent<Collider2D>();
+            foundPlacement = true;
+            foreach (var otherAsteroid in _asteroids)
+            {
+                if (asteroid == otherAsteroid)
+                {
+                    continue;
+                }
+                var otherAsteroidRadius = otherAsteroid.GetComponent<ExclusionRadius>();
+                if (Vector2.Distance(asteroid.transform.position, otherAsteroid.transform.position) < otherAsteroidRadius.Radius + asteroidRadius.Radius)
+                {
+                    foundPlacement = false;
+                    break;
+                }
+            }
+        } while (!foundPlacement);
+        asteroid.SetActive(true);
     }
 }
