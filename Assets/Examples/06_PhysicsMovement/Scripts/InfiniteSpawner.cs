@@ -13,7 +13,13 @@ public class InfiniteSpawner : MonoBehaviour
     public Transform Player;
 
     private List<GameObject> _asteroids = new List<GameObject>();
+    private List<GameObject> _tempAsteroids = new List<GameObject>(); // asteroids that shouldn't be respawned after culling
     private float _timeSinceCull = 0.0f;
+
+    public void AddTemporaryAsteroid(GameObject newAsteroid)
+    {
+        _tempAsteroids.Add(newAsteroid);
+    }
 
 	private void Start ()
     {
@@ -43,6 +49,7 @@ public class InfiniteSpawner : MonoBehaviour
                 break;
             }
         }
+        _tempAsteroids.RemoveAll(a => Vector2.Distance(Player.position, a.transform.position) < MaxSpawnDistance);
     }
 
     private void GeneratePool()

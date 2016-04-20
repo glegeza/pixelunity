@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class MouseObjectTracker : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class MouseObjectTracker : MonoBehaviour
 
     public bool Announce = true;
     public GameObject CurrentObject { get; private set; }
+
+    public event EventHandler ObjectClicked;
     
 	void Start ()
     {
@@ -34,6 +37,11 @@ public class MouseObjectTracker : MonoBehaviour
                 Debug.Log("Mouse target: None.");
             }
             CurrentObject = null;
+        }
+
+        if (CurrentObject && Input.GetMouseButtonDown(0))
+        {
+            ObjectClicked(this, EventArgs.Empty);
         }
     }
 }
