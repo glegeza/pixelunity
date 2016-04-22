@@ -24,8 +24,8 @@ public class BatchSpriteRename : EditorWindow
         _serializedInfo = new SerializedObject(Info);
     }
 
-    [MenuItem("Window/Slice Renamer")]
-    public void ShowWindow()
+    [MenuItem("Window/Stuff/Slice Renamer")]
+    public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(BatchSpriteRename), false, "Sprite Renamer");
     }

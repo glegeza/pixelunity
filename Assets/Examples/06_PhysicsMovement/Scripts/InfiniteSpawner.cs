@@ -1,31 +1,115 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class InfiniteSpawner : MonoBehaviour
 {
+    public class AsteroidSizeDescription
+    {
+        public AsteroidSizeDescription(string str)
+        {
+            SizeString = str;
+        }
+
+        public string SizeString;
+        public float Mass;
+        public float LinearDrag;
+        public float AngularDrag;
+    }
+
+    public class AsteroidShapeDescription
+    {
+        public AsteroidShapeDescription(string str)
+        {
+            ShapeString = str;
+        }
+
+        public string ShapeString;
+    }
+
+    public class AsteroidTypeDescription
+    {
+        public AsteroidTypeDescription(string str)
+        {
+            TypeString = str;
+        }
+
+        public string TypeString;
+
+        public string GetSpriteName(AsteroidSizeDescription size, AsteroidShapeDescription shape)
+        {
+            return String.Format("asteroid_{0}_{1}_{2}", size.SizeString, shape.ShapeString, TypeString);
+        }
+
+        public string GetPrefabName(AsteroidSizeDescription size, AsteroidShapeDescription shape)
+        {
+            return String.Format("asteroid_{0}_{1}", size.SizeString, shape.ShapeString);
+        }
+    }
+
+    public string AsteroidPrefix = "asteroid";
     public float CullTime = 1.0f;
     public float PopulateMin = 2.0f;
     public float MinSpawnDistance = 35.0f;
     public float MaxSpawnDistance = 60.0f;
     public int PoolSize = 120;
-    public List<GameObject> AsteroidTypes = new List<GameObject>();
     public Transform Player;
+
+    private List<AsteroidSizeDescription> _sizes = new List<AsteroidSizeDescription>();
+    private List<AsteroidShapeDescription> _shapes = new List<AsteroidShapeDescription>();
+    private List<AsteroidTypeDescription> _types = new List<AsteroidTypeDescription>();
 
     private List<GameObject> _asteroids = new List<GameObject>();
     private List<GameObject> _tempAsteroids = new List<GameObject>(); // asteroids that shouldn't be respawned after culling
+    private List<Sprite> _asteroidSprites = new List<Sprite>();
+    private List<GameObject> _asteroidPrefabs = new List<GameObject>();
     private float _timeSinceCull = 0.0f;
+
+	private void Start ()
+    {
+        var sprites = Resources.LoadAll<Sprite>("sprites");
+        foreach (Sprite sprite in sprites)
+        {
+            print(sprite.name);
+        }
+        _asteroidSprites.AddRange(sprites.
+            Where(s => s.name.Contains(AsteroidPrefix)));
+        print(_asteroidSprites.Count);
+        var prefabs = Resources.LoadAll<GameObject>("prefabs");
+        _asteroidPrefabs.AddRange(prefabs.
+            Where(p => p.name.Contains(AsteroidPrefix)));
+
+        _sizes.Add(new AsteroidSizeDescription("tiny"));
+        _sizes.Add(new AsteroidSizeDescription("small"));
+        _sizes.Add(new AsteroidSizeDescription("large"));
+        _sizes.Add(new AsteroidSizeDescription("huge"));
+
+        _shapes.Add(new AsteroidShapeDescription("round"));
+        //_shapes.Add(new AsteroidShapeDescription("oblong"));
+        //_shapes.Add(new AsteroidShapeDescription("jagged"));
+
+        _types.Add(new AsteroidTypeDescription("blueore"));
+        _types.Add(new AsteroidTypeDescription("blueveins"));
+        _types.Add(new AsteroidTypeDescription("brown"));
+        _types.Add(new AsteroidTypeDescription("brownore"));
+        _types.Add(new AsteroidTypeDescription("darkblue"));
+        _types.Add(new AsteroidTypeDescription("darkgray"));
+        _types.Add(new AsteroidTypeDescription("gray"));
+        _types.Add(new AsteroidTypeDescription("grayveins"));
+        _types.Add(new AsteroidTypeDescription("lavaveins"));
+        _types.Add(new AsteroidTypeDescription("lightblue"));
+        _types.Add(new AsteroidTypeDescription("lightblueore"));
+        _types.Add(new AsteroidTypeDescription("lightgray"));
+
+        GeneratePool();
+        PlaceAsteroids(true);
+	}
 
     public void AddTemporaryAsteroid(GameObject newAsteroid)
     {
         _tempAsteroids.Add(newAsteroid);
     }
-
-	private void Start ()
-    {
-        GeneratePool();
-        PlaceAsteroids(true);
-	}
 	
 	private void Update ()
     {
@@ -57,7 +141,16 @@ public class InfiniteSpawner : MonoBehaviour
         _asteroids.Clear();
         for (var i = 0; i < PoolSize; i++)
         {
-            var newRoid = Instantiate(AsteroidTypes[Random.Range(0, AsteroidTypes.Count)]);
+            var size = _sizes[UnityEngine.Random.Range(0, _sizes.Count)];
+            var type = _types[UnityEngine.Random.Range(0, _types.Count)];
+            var shape = _shapes[UnityEngine.Random.Range(0, _shapes.Count)];
+            var prefab_name = type.GetPrefabName(size, shape);
+            var sprite_name = type.GetSpriteName(size, shape);
+            var prefab = _asteroidPrefabs.Find(p => p.name == prefab_name);
+            var sprite = _asteroidSprites.Find(s => s.name == sprite_name);
+            var newRoid = Instantiate(prefab) as GameObject;
+            var spriteRenderer = newRoid.AddComponent<SpriteRenderer>();
+            spriteRenderer.sprite = sprite;
             newRoid.SetActive(false);
             _asteroids.Add(newRoid);
         }
@@ -79,8 +172,8 @@ public class InfiniteSpawner : MonoBehaviour
         do
         {
             var playerAngle = Mathf.Atan2(Player.transform.up.y, Player.transform.up.x);
-            var angle = Random.Range(-Mathf.PI, Mathf.PI) + playerAngle;
-            var position = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * Random.Range(min, MaxSpawnDistance);
+            var angle = UnityEngine.Random.Range(-Mathf.PI, Mathf.PI) + playerAngle;
+            var position = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * UnityEngine.Random.Range(min, MaxSpawnDistance);
             asteroid.transform.position = new Vector3(position.x + Player.position.x, position.y + Player.position.y, asteroid.transform.position.z);
             var collider = asteroid.GetComponent<Collider2D>();
             foundPlacement = true;
@@ -98,8 +191,8 @@ public class InfiniteSpawner : MonoBehaviour
                 }
             }
         } while (!foundPlacement);
-        var dirVec = Random.insideUnitCircle.normalized;
+        var dirVec = UnityEngine.Random.insideUnitCircle.normalized;
         asteroid.SetActive(true);
-        asteroid.GetComponent<Rigidbody2D>().AddForce(dirVec * Random.Range(1.0f, 5.0f), ForceMode2D.Impulse);
+        asteroid.GetComponent<Rigidbody2D>().AddForce(dirVec * UnityEngine.Random.Range(1.0f, 5.0f), ForceMode2D.Impulse);
     }
 }

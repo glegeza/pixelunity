@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4e24de5fea4b54745bf259a23cf8f088
-timeCreated: 1461265336
+timeCreated: 1461348825
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -309,6 +309,150 @@ TextureImporter:
     21300604: asteroid_jagged_small_lightblueore
     21300606: asteroid_jagged_large_lightblueore
     21300608: asteroid_jagged_huge_lightblueore
+    21300610: asteroid_tiny_round_gray
+    21300612: asteroid_small_round_gray
+    21300614: asteroid_large_round_gray
+    21300616: asteroid_huge_round_gray
+    21300618: asteroid_tiny_oblong_gray
+    21300620: asteroid_small_oblong_gray
+    21300622: asteroid_large_oblong_gray
+    21300624: asteroid_huge_oblong_gray
+    21300626: asteroid_tiny_jagged_gray
+    21300628: asteroid_small_jagged_gray
+    21300630: asteroid_large_jagged_gray
+    21300632: asteroid_huge_jagged_gray
+    21300634: asteroid_tiny_round_grayveins
+    21300636: asteroid_small_round_grayveins
+    21300638: asteroid_large_round_grayveins
+    21300640: asteroid_huge_round_grayveins
+    21300642: asteroid_tiny_oblong_grayveins
+    21300644: asteroid_small_oblong_grayveins
+    21300646: asteroid_large_oblong_grayveins
+    21300648: asteroid_huge_oblong_grayveins
+    21300650: asteroid_tiny_jagged_grayveins
+    21300652: asteroid_small_jagged_grayveins
+    21300654: asteroid_large_jagged_grayveins
+    21300656: asteroid_huge_jagged_grayveins
+    21300658: asteroid_tiny_round_lightgray
+    21300660: asteroid_small_round_lightgray
+    21300662: asteroid_large_round_lightgray
+    21300664: asteroid_huge_round_lightgray
+    21300666: asteroid_tiny_oblong_lightgray
+    21300668: asteroid_small_oblong_lightgray
+    21300670: asteroid_large_oblong_lightgray
+    21300672: asteroid_huge_oblong_lightgray
+    21300674: asteroid_tiny_jagged_lightgray
+    21300676: asteroid_small_jagged_lightgray
+    21300678: asteroid_large_jagged_lightgray
+    21300680: asteroid_huge_jagged_lightgray
+    21300682: asteroid_tiny_round_darkgray
+    21300684: asteroid_small_round_darkgray
+    21300686: asteroid_large_round_darkgray
+    21300688: asteroid_huge_round_darkgray
+    21300690: asteroid_tiny_oblong_darkgray
+    21300692: asteroid_small_oblong_darkgray
+    21300694: asteroid_large_oblong_darkgray
+    21300696: asteroid_huge_oblong_darkgray
+    21300698: asteroid_tiny_jagged_darkgray
+    21300700: asteroid_small_jagged_darkgray
+    21300702: asteroid_large_jagged_darkgray
+    21300704: asteroid_huge_jagged_darkgray
+    21300706: asteroid_tiny_round_lavaveins
+    21300708: asteroid_small_round_lavaveins
+    21300710: asteroid_large_round_lavaveins
+    21300712: asteroid_huge_round_lavaveins
+    21300714: asteroid_tiny_oblong_lavaveins
+    21300716: asteroid_small_oblong_lavaveins
+    21300718: asteroid_large_oblong_lavaveins
+    21300720: asteroid_huge_oblong_lavaveins
+    21300722: asteroid_tiny_jagged_lavaveins
+    21300724: asteroid_small_jagged_lavaveins
+    21300726: asteroid_large_jagged_lavaveins
+    21300728: asteroid_huge_jagged_lavaveins
+    21300730: asteroid_tiny_round_blueore
+    21300732: asteroid_small_round_blueore
+    21300734: asteroid_large_round_blueore
+    21300736: asteroid_huge_round_blueore
+    21300738: asteroid_tiny_oblong_blueore
+    21300740: asteroid_small_oblong_blueore
+    21300742: asteroid_large_oblong_blueore
+    21300744: asteroid_huge_oblong_blueore
+    21300746: asteroid_tiny_jagged_blueore
+    21300748: asteroid_small_jagged_blueore
+    21300750: asteroid_large_jagged_blueore
+    21300752: asteroid_huge_jagged_blueore
+    21300754: asteroid_tiny_round_brown
+    21300756: asteroid_small_round_brown
+    21300758: asteroid_large_round_brown
+    21300760: asteroid_huge_round_brown
+    21300762: asteroid_tiny_oblong_brown
+    21300764: asteroid_small_oblong_brown
+    21300766: asteroid_large_oblong_brown
+    21300768: asteroid_huge_oblong_brown
+    21300770: asteroid_tiny_jagged_brown
+    21300772: asteroid_small_jagged_brown
+    21300774: asteroid_large_jagged_brown
+    21300776: asteroid_huge_jagged_brown
+    21300778: asteroid_tiny_round_blueveins
+    21300780: asteroid_small_round_blueveins
+    21300782: asteroid_large_round_blueveins
+    21300784: asteroid_huge_round_blueveins
+    21300786: asteroid_tiny_oblong_blueveins
+    21300788: asteroid_small_oblong_blueveins
+    21300790: asteroid_large_oblong_blueveins
+    21300792: asteroid_huge_oblong_blueveins
+    21300794: asteroid_tiny_jagged_blueveins
+    21300796: asteroid_small_jagged_blueveins
+    21300798: asteroid_large_jagged_blueveins
+    21300800: asteroid_huge_jagged_blueveins
+    21300802: asteroid_tiny_round_brownore
+    21300804: asteroid_small_round_brownore
+    21300806: asteroid_large_round_brownore
+    21300808: asteroid_huge_round_brownore
+    21300810: asteroid_tiny_oblong_brownore
+    21300812: asteroid_small_oblong_brownore
+    21300814: asteroid_large_oblong_brownore
+    21300816: asteroid_huge_oblong_brownore
+    21300818: asteroid_tiny_jagged_brownore
+    21300820: asteroid_small_jagged_brownore
+    21300822: asteroid_large_jagged_brownore
+    21300824: asteroid_huge_jagged_brownore
+    21300826: asteroid_tiny_round_darkblue
+    21300828: asteroid_small_round_darkblue
+    21300830: asteroid_large_round_darkblue
+    21300832: asteroid_huge_round_darkblue
+    21300834: asteroid_tiny_oblong_darkblue
+    21300836: asteroid_small_oblong_darkblue
+    21300838: asteroid_large_oblong_darkblue
+    21300840: asteroid_huge_oblong_darkblue
+    21300842: asteroid_tiny_jagged_darkblue
+    21300844: asteroid_small_jagged_darkblue
+    21300846: asteroid_large_jagged_darkblue
+    21300848: asteroid_huge_jagged_darkblue
+    21300850: asteroid_tiny_round_lightblue
+    21300852: asteroid_small_round_lightblue
+    21300854: asteroid_large_round_lightblue
+    21300856: asteroid_huge_round_lightblue
+    21300858: asteroid_tiny_oblong_lightblue
+    21300860: asteroid_small_oblong_lightblue
+    21300862: asteroid_large_oblong_lightblue
+    21300864: asteroid_huge_oblong_lightblue
+    21300866: asteroid_tiny_jagged_lightblue
+    21300868: asteroid_small_jagged_lightblue
+    21300870: asteroid_large_jagged_lightblue
+    21300872: asteroid_huge_jagged_lightblue
+    21300874: asteroid_tiny_round_lightblueore
+    21300876: asteroid_small_round_lightblueore
+    21300878: asteroid_large_round_lightblueore
+    21300880: asteroid_huge_round_lightblueore
+    21300882: asteroid_tiny_oblong_lightblueore
+    21300884: asteroid_small_oblong_lightblueore
+    21300886: asteroid_large_oblong_lightblueore
+    21300888: asteroid_huge_oblong_lightblueore
+    21300890: asteroid_tiny_jagged_lightblueore
+    21300892: asteroid_small_jagged_lightblueore
+    21300894: asteroid_large_jagged_lightblueore
+    21300896: asteroid_huge_jagged_lightblueore
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -355,7 +499,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: asteroid_tiny_gray
+    - name: asteroid_tiny_round_gray
       rect:
         serializedVersion: 2
         x: 4
@@ -363,10 +507,10 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_gray
+    - name: asteroid_small_round_gray
       rect:
         serializedVersion: 2
         x: 16
@@ -377,7 +521,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_gray
+    - name: asteroid_large_round_gray
       rect:
         serializedVersion: 2
         x: 32
@@ -395,7 +539,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_gray
+    - name: asteroid_huge_round_gray
       rect:
         serializedVersion: 2
         x: 70
@@ -403,7 +547,7 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
       - - {x: -23, y: 24}
@@ -414,7 +558,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_gray
+    - name: asteroid_tiny_oblong_gray
       rect:
         serializedVersion: 2
         x: 122
@@ -425,7 +569,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_gray
+    - name: asteroid_small_oblong_gray
       rect:
         serializedVersion: 2
         x: 134
@@ -436,7 +580,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_gray
+    - name: asteroid_large_oblong_gray
       rect:
         serializedVersion: 2
         x: 154
@@ -447,7 +591,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_gray
+    - name: asteroid_huge_oblong_gray
       rect:
         serializedVersion: 2
         x: 182
@@ -464,7 +608,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_gray
+    - name: asteroid_tiny_jagged_gray
       rect:
         serializedVersion: 2
         x: 218
@@ -475,7 +619,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_gray
+    - name: asteroid_small_jagged_gray
       rect:
         serializedVersion: 2
         x: 230
@@ -486,7 +630,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_gray
+    - name: asteroid_large_jagged_gray
       rect:
         serializedVersion: 2
         x: 250
@@ -497,7 +641,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_gray
+    - name: asteroid_huge_jagged_gray
       rect:
         serializedVersion: 2
         x: 278
@@ -515,7 +659,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_goldveins
+    - name: asteroid_tiny_round_grayveins
       rect:
         serializedVersion: 2
         x: 4
@@ -523,10 +667,10 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_goldveins
+    - name: asteroid_small_round_grayveins
       rect:
         serializedVersion: 2
         x: 16
@@ -537,7 +681,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_goldveins
+    - name: asteroid_large_round_grayveins
       rect:
         serializedVersion: 2
         x: 32
@@ -555,7 +699,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_goldveins
+    - name: asteroid_huge_round_grayveins
       rect:
         serializedVersion: 2
         x: 70
@@ -574,7 +718,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_goldveins
+    - name: asteroid_tiny_oblong_grayveins
       rect:
         serializedVersion: 2
         x: 122
@@ -585,7 +729,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_goldveins
+    - name: asteroid_small_oblong_grayveins
       rect:
         serializedVersion: 2
         x: 134
@@ -596,7 +740,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_goldveins
+    - name: asteroid_large_oblong_grayveins
       rect:
         serializedVersion: 2
         x: 154
@@ -607,7 +751,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_goldveins
+    - name: asteroid_huge_oblong_grayveins
       rect:
         serializedVersion: 2
         x: 182
@@ -624,7 +768,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_goldveins
+    - name: asteroid_tiny_jagged_grayveins
       rect:
         serializedVersion: 2
         x: 218
@@ -635,7 +779,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_goldveins
+    - name: asteroid_small_jagged_grayveins
       rect:
         serializedVersion: 2
         x: 230
@@ -646,7 +790,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_goldveins
+    - name: asteroid_large_jagged_grayveins
       rect:
         serializedVersion: 2
         x: 250
@@ -657,7 +801,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_goldveins
+    - name: asteroid_huge_jagged_grayveins
       rect:
         serializedVersion: 2
         x: 278
@@ -675,7 +819,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_lightgray
+    - name: asteroid_tiny_round_lightgray
       rect:
         serializedVersion: 2
         x: 4
@@ -683,10 +827,10 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_lightgray
+    - name: asteroid_small_round_lightgray
       rect:
         serializedVersion: 2
         x: 16
@@ -697,7 +841,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_lightgray
+    - name: asteroid_large_round_lightgray
       rect:
         serializedVersion: 2
         x: 32
@@ -715,7 +859,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_lightgray
+    - name: asteroid_huge_round_lightgray
       rect:
         serializedVersion: 2
         x: 70
@@ -734,7 +878,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_lightgray
+    - name: asteroid_tiny_oblong_lightgray
       rect:
         serializedVersion: 2
         x: 122
@@ -745,7 +889,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_lightgray
+    - name: asteroid_small_oblong_lightgray
       rect:
         serializedVersion: 2
         x: 134
@@ -756,7 +900,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_lightgray
+    - name: asteroid_large_oblong_lightgray
       rect:
         serializedVersion: 2
         x: 154
@@ -767,7 +911,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_lightgray
+    - name: asteroid_huge_oblong_lightgray
       rect:
         serializedVersion: 2
         x: 182
@@ -784,7 +928,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_lightgray
+    - name: asteroid_tiny_jagged_lightgray
       rect:
         serializedVersion: 2
         x: 218
@@ -795,7 +939,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_lightgray
+    - name: asteroid_small_jagged_lightgray
       rect:
         serializedVersion: 2
         x: 230
@@ -806,7 +950,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_lightgray
+    - name: asteroid_large_jagged_lightgray
       rect:
         serializedVersion: 2
         x: 250
@@ -817,7 +961,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_lightgray
+    - name: asteroid_huge_jagged_lightgray
       rect:
         serializedVersion: 2
         x: 278
@@ -835,7 +979,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_darkgray
+    - name: asteroid_tiny_round_darkgray
       rect:
         serializedVersion: 2
         x: 4
@@ -843,10 +987,10 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_darkgray
+    - name: asteroid_small_round_darkgray
       rect:
         serializedVersion: 2
         x: 16
@@ -857,7 +1001,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_darkgray
+    - name: asteroid_large_round_darkgray
       rect:
         serializedVersion: 2
         x: 32
@@ -875,7 +1019,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_darkgray
+    - name: asteroid_huge_round_darkgray
       rect:
         serializedVersion: 2
         x: 70
@@ -894,7 +1038,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_darkgray
+    - name: asteroid_tiny_oblong_darkgray
       rect:
         serializedVersion: 2
         x: 122
@@ -905,7 +1049,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_darkgray
+    - name: asteroid_small_oblong_darkgray
       rect:
         serializedVersion: 2
         x: 134
@@ -916,7 +1060,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_darkgray
+    - name: asteroid_large_oblong_darkgray
       rect:
         serializedVersion: 2
         x: 154
@@ -927,7 +1071,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_darkgray
+    - name: asteroid_huge_oblong_darkgray
       rect:
         serializedVersion: 2
         x: 182
@@ -944,7 +1088,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_darkgray
+    - name: asteroid_tiny_jagged_darkgray
       rect:
         serializedVersion: 2
         x: 218
@@ -955,7 +1099,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_darkgray
+    - name: asteroid_small_jagged_darkgray
       rect:
         serializedVersion: 2
         x: 230
@@ -966,7 +1110,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_darkgray
+    - name: asteroid_large_jagged_darkgray
       rect:
         serializedVersion: 2
         x: 250
@@ -977,7 +1121,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_darkgray
+    - name: asteroid_huge_jagged_darkgray
       rect:
         serializedVersion: 2
         x: 278
@@ -995,7 +1139,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_lavaveins
+    - name: asteroid_tiny_round_lavaveins
       rect:
         serializedVersion: 2
         x: 4
@@ -1003,10 +1147,10 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_lavaveins
+    - name: asteroid_small_round_lavaveins
       rect:
         serializedVersion: 2
         x: 16
@@ -1017,7 +1161,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_lavaveins
+    - name: asteroid_large_round_lavaveins
       rect:
         serializedVersion: 2
         x: 32
@@ -1037,7 +1181,7 @@ TextureImporter:
         - {x: 16.5, y: -13}
         - {x: 16.5, y: 11}
         - {x: 14.5, y: 16}
-    - name: asteroid_huge_lavaveins
+    - name: asteroid_huge_round_lavaveins
       rect:
         serializedVersion: 2
         x: 70
@@ -1056,7 +1200,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_lavaveins
+    - name: asteroid_tiny_oblong_lavaveins
       rect:
         serializedVersion: 2
         x: 122
@@ -1067,7 +1211,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_lavaveins
+    - name: asteroid_small_oblong_lavaveins
       rect:
         serializedVersion: 2
         x: 134
@@ -1078,7 +1222,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_lavaveins
+    - name: asteroid_large_oblong_lavaveins
       rect:
         serializedVersion: 2
         x: 154
@@ -1089,7 +1233,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_lavaveins
+    - name: asteroid_huge_oblong_lavaveins
       rect:
         serializedVersion: 2
         x: 182
@@ -1106,7 +1250,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_lavaveins
+    - name: asteroid_tiny_jagged_lavaveins
       rect:
         serializedVersion: 2
         x: 218
@@ -1117,7 +1261,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_lavaveins
+    - name: asteroid_small_jagged_lavaveins
       rect:
         serializedVersion: 2
         x: 230
@@ -1128,7 +1272,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_lavaveins
+    - name: asteroid_large_jagged_lavaveins
       rect:
         serializedVersion: 2
         x: 250
@@ -1139,7 +1283,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_lavaveins
+    - name: asteroid_huge_jagged_lavaveins
       rect:
         serializedVersion: 2
         x: 278
@@ -1157,7 +1301,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_blueore
+    - name: asteroid_tiny_round_blueore
       rect:
         serializedVersion: 2
         x: 4
@@ -1168,7 +1312,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_blueore
+    - name: asteroid_small_round_blueore
       rect:
         serializedVersion: 2
         x: 16
@@ -1179,7 +1323,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_blueore
+    - name: asteroid_large_round_blueore
       rect:
         serializedVersion: 2
         x: 32
@@ -1197,7 +1341,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_blueore
+    - name: asteroid_huge_round_blueore
       rect:
         serializedVersion: 2
         x: 70
@@ -1216,7 +1360,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_blueore
+    - name: asteroid_tiny_oblong_blueore
       rect:
         serializedVersion: 2
         x: 122
@@ -1227,7 +1371,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_blueore
+    - name: asteroid_small_oblong_blueore
       rect:
         serializedVersion: 2
         x: 134
@@ -1238,7 +1382,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_blueore
+    - name: asteroid_large_oblong_blueore
       rect:
         serializedVersion: 2
         x: 154
@@ -1249,7 +1393,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_blueore
+    - name: asteroid_huge_oblong_blueore
       rect:
         serializedVersion: 2
         x: 182
@@ -1266,7 +1410,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_blueore
+    - name: asteroid_tiny_jagged_blueore
       rect:
         serializedVersion: 2
         x: 218
@@ -1277,7 +1421,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_blueore
+    - name: asteroid_small_jagged_blueore
       rect:
         serializedVersion: 2
         x: 230
@@ -1288,7 +1432,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_blueore
+    - name: asteroid_large_jagged_blueore
       rect:
         serializedVersion: 2
         x: 250
@@ -1299,7 +1443,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_blueore
+    - name: asteroid_huge_jagged_blueore
       rect:
         serializedVersion: 2
         x: 278
@@ -1317,7 +1461,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_brown
+    - name: asteroid_tiny_round_brown
       rect:
         serializedVersion: 2
         x: 4
@@ -1328,7 +1472,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_brown
+    - name: asteroid_small_round_brown
       rect:
         serializedVersion: 2
         x: 16
@@ -1339,7 +1483,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_brown
+    - name: asteroid_large_round_brown
       rect:
         serializedVersion: 2
         x: 32
@@ -1357,7 +1501,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_brown
+    - name: asteroid_huge_round_brown
       rect:
         serializedVersion: 2
         x: 70
@@ -1376,7 +1520,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_brown
+    - name: asteroid_tiny_oblong_brown
       rect:
         serializedVersion: 2
         x: 122
@@ -1387,7 +1531,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_brown
+    - name: asteroid_small_oblong_brown
       rect:
         serializedVersion: 2
         x: 134
@@ -1398,7 +1542,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_brown
+    - name: asteroid_large_oblong_brown
       rect:
         serializedVersion: 2
         x: 154
@@ -1409,7 +1553,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_brown
+    - name: asteroid_huge_oblong_brown
       rect:
         serializedVersion: 2
         x: 182
@@ -1426,7 +1570,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_brown
+    - name: asteroid_tiny_jagged_brown
       rect:
         serializedVersion: 2
         x: 218
@@ -1437,7 +1581,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_brown
+    - name: asteroid_small_jagged_brown
       rect:
         serializedVersion: 2
         x: 230
@@ -1448,7 +1592,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_brown
+    - name: asteroid_large_jagged_brown
       rect:
         serializedVersion: 2
         x: 250
@@ -1459,7 +1603,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_brown
+    - name: asteroid_huge_jagged_brown
       rect:
         serializedVersion: 2
         x: 278
@@ -1477,7 +1621,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_blueveins
+    - name: asteroid_tiny_round_blueveins
       rect:
         serializedVersion: 2
         x: 4
@@ -1488,7 +1632,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_blueveins
+    - name: asteroid_small_round_blueveins
       rect:
         serializedVersion: 2
         x: 16
@@ -1499,7 +1643,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_blueveins
+    - name: asteroid_large_round_blueveins
       rect:
         serializedVersion: 2
         x: 32
@@ -1517,7 +1661,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_blueveins
+    - name: asteroid_huge_round_blueveins
       rect:
         serializedVersion: 2
         x: 70
@@ -1536,7 +1680,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_blueveins
+    - name: asteroid_tiny_oblong_blueveins
       rect:
         serializedVersion: 2
         x: 122
@@ -1547,7 +1691,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_blueveins
+    - name: asteroid_small_oblong_blueveins
       rect:
         serializedVersion: 2
         x: 134
@@ -1558,7 +1702,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_blueveins
+    - name: asteroid_large_oblong_blueveins
       rect:
         serializedVersion: 2
         x: 154
@@ -1569,7 +1713,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_blueveins
+    - name: asteroid_huge_oblong_blueveins
       rect:
         serializedVersion: 2
         x: 182
@@ -1586,7 +1730,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_blueveins
+    - name: asteroid_tiny_jagged_blueveins
       rect:
         serializedVersion: 2
         x: 218
@@ -1597,7 +1741,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_blueveins
+    - name: asteroid_small_jagged_blueveins
       rect:
         serializedVersion: 2
         x: 230
@@ -1608,7 +1752,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_blueveins
+    - name: asteroid_large_jagged_blueveins
       rect:
         serializedVersion: 2
         x: 250
@@ -1619,7 +1763,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_blueveins
+    - name: asteroid_huge_jagged_blueveins
       rect:
         serializedVersion: 2
         x: 278
@@ -1637,7 +1781,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_brownore
+    - name: asteroid_tiny_round_brownore
       rect:
         serializedVersion: 2
         x: 4
@@ -1648,7 +1792,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_brownore
+    - name: asteroid_small_round_brownore
       rect:
         serializedVersion: 2
         x: 16
@@ -1659,7 +1803,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_brownore
+    - name: asteroid_large_round_brownore
       rect:
         serializedVersion: 2
         x: 32
@@ -1677,7 +1821,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_brownore
+    - name: asteroid_huge_round_brownore
       rect:
         serializedVersion: 2
         x: 70
@@ -1696,7 +1840,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_brownore
+    - name: asteroid_tiny_oblong_brownore
       rect:
         serializedVersion: 2
         x: 122
@@ -1707,7 +1851,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_brownore
+    - name: asteroid_small_oblong_brownore
       rect:
         serializedVersion: 2
         x: 134
@@ -1718,7 +1862,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_brownore
+    - name: asteroid_large_oblong_brownore
       rect:
         serializedVersion: 2
         x: 154
@@ -1729,7 +1873,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_brownore
+    - name: asteroid_huge_oblong_brownore
       rect:
         serializedVersion: 2
         x: 182
@@ -1746,7 +1890,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_brownore
+    - name: asteroid_tiny_jagged_brownore
       rect:
         serializedVersion: 2
         x: 218
@@ -1757,7 +1901,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_brownore
+    - name: asteroid_small_jagged_brownore
       rect:
         serializedVersion: 2
         x: 230
@@ -1768,7 +1912,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_brownore
+    - name: asteroid_large_jagged_brownore
       rect:
         serializedVersion: 2
         x: 250
@@ -1779,7 +1923,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_brownore
+    - name: asteroid_huge_jagged_brownore
       rect:
         serializedVersion: 2
         x: 278
@@ -1797,7 +1941,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_darkblue
+    - name: asteroid_tiny_round_darkblue
       rect:
         serializedVersion: 2
         x: 4
@@ -1808,7 +1952,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_darkblue
+    - name: asteroid_small_round_darkblue
       rect:
         serializedVersion: 2
         x: 16
@@ -1819,7 +1963,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_darkblue
+    - name: asteroid_large_round_darkblue
       rect:
         serializedVersion: 2
         x: 32
@@ -1837,7 +1981,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_darkblue
+    - name: asteroid_huge_round_darkblue
       rect:
         serializedVersion: 2
         x: 70
@@ -1856,7 +2000,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_darkblue
+    - name: asteroid_tiny_oblong_darkblue
       rect:
         serializedVersion: 2
         x: 122
@@ -1867,7 +2011,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_darkblue
+    - name: asteroid_small_oblong_darkblue
       rect:
         serializedVersion: 2
         x: 134
@@ -1878,7 +2022,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_darkblue
+    - name: asteroid_large_oblong_darkblue
       rect:
         serializedVersion: 2
         x: 154
@@ -1889,7 +2033,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_darkblue
+    - name: asteroid_huge_oblong_darkblue
       rect:
         serializedVersion: 2
         x: 182
@@ -1906,7 +2050,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_darkblue
+    - name: asteroid_tiny_jagged_darkblue
       rect:
         serializedVersion: 2
         x: 218
@@ -1917,7 +2061,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_darkblue
+    - name: asteroid_small_jagged_darkblue
       rect:
         serializedVersion: 2
         x: 230
@@ -1928,7 +2072,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_darkblue
+    - name: asteroid_large_jagged_darkblue
       rect:
         serializedVersion: 2
         x: 250
@@ -1939,7 +2083,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_darkblue
+    - name: asteroid_huge_jagged_darkblue
       rect:
         serializedVersion: 2
         x: 278
@@ -1957,7 +2101,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_lightblue
+    - name: asteroid_tiny_round_lightblue
       rect:
         serializedVersion: 2
         x: 4
@@ -1968,7 +2112,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_lightblue
+    - name: asteroid_small_round_lightblue
       rect:
         serializedVersion: 2
         x: 16
@@ -1979,7 +2123,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_lightblue
+    - name: asteroid_large_round_lightblue
       rect:
         serializedVersion: 2
         x: 32
@@ -1997,7 +2141,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_lightblue
+    - name: asteroid_huge_round_lightblue
       rect:
         serializedVersion: 2
         x: 70
@@ -2016,7 +2160,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_lightblue
+    - name: asteroid_tiny_oblong_lightblue
       rect:
         serializedVersion: 2
         x: 122
@@ -2027,7 +2171,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_lightblue
+    - name: asteroid_small_oblong_lightblue
       rect:
         serializedVersion: 2
         x: 134
@@ -2038,7 +2182,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_lightblue
+    - name: asteroid_large_oblong_lightblue
       rect:
         serializedVersion: 2
         x: 154
@@ -2049,7 +2193,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_lightblue
+    - name: asteroid_huge_oblong_lightblue
       rect:
         serializedVersion: 2
         x: 182
@@ -2066,7 +2210,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_lightblue
+    - name: asteroid_tiny_jagged_lightblue
       rect:
         serializedVersion: 2
         x: 218
@@ -2077,7 +2221,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_lightblue
+    - name: asteroid_small_jagged_lightblue
       rect:
         serializedVersion: 2
         x: 230
@@ -2088,7 +2232,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_lightblue
+    - name: asteroid_large_jagged_lightblue
       rect:
         serializedVersion: 2
         x: 250
@@ -2099,7 +2243,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_lightblue
+    - name: asteroid_huge_jagged_lightblue
       rect:
         serializedVersion: 2
         x: 278
@@ -2117,7 +2261,7 @@ TextureImporter:
         - {x: 16, y: -20}
         - {x: 16, y: 13}
         - {x: 9, y: 19}
-    - name: asteroid_tiny_lightblueore
+    - name: asteroid_tiny_round_lightblueore
       rect:
         serializedVersion: 2
         x: 4
@@ -2128,7 +2272,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_small_lightblueore
+    - name: asteroid_small_round_lightblueore
       rect:
         serializedVersion: 2
         x: 16
@@ -2139,7 +2283,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_large_lightblueore
+    - name: asteroid_large_round_lightblueore
       rect:
         serializedVersion: 2
         x: 32
@@ -2157,7 +2301,7 @@ TextureImporter:
         - {x: 16.5, y: -16}
         - {x: 16.5, y: 15}
         - {x: 12.5, y: 16}
-    - name: asteroid_huge_lightblueore
+    - name: asteroid_huge_round_lightblueore
       rect:
         serializedVersion: 2
         x: 70
@@ -2176,7 +2320,7 @@ TextureImporter:
         - {x: 24, y: -23}
         - {x: 24, y: 23}
         - {x: 20, y: 24}
-    - name: asteroid_oblong_tiny_lightblueore
+    - name: asteroid_tiny_oblong_lightblueore
       rect:
         serializedVersion: 2
         x: 122
@@ -2187,7 +2331,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_small_lightblueore
+    - name: asteroid_small_oblong_lightblueore
       rect:
         serializedVersion: 2
         x: 134
@@ -2198,7 +2342,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_large_lightblueore
+    - name: asteroid_large_oblong_lightblueore
       rect:
         serializedVersion: 2
         x: 154
@@ -2209,7 +2353,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_oblong_huge_lightblueore
+    - name: asteroid_huge_oblong_lightblueore
       rect:
         serializedVersion: 2
         x: 182
@@ -2226,7 +2370,7 @@ TextureImporter:
         - {x: 5, y: -24}
         - {x: 16, y: -6}
         - {x: 16, y: 24}
-    - name: asteroid_jagged_tiny_lightblueore
+    - name: asteroid_tiny_jagged_lightblueore
       rect:
         serializedVersion: 2
         x: 218
@@ -2237,7 +2381,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_small_lightblueore
+    - name: asteroid_small_jagged_lightblueore
       rect:
         serializedVersion: 2
         x: 230
@@ -2248,7 +2392,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_large_lightblueore
+    - name: asteroid_large_jagged_lightblueore
       rect:
         serializedVersion: 2
         x: 250
@@ -2259,7 +2403,7 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: asteroid_jagged_huge_lightblueore
+    - name: asteroid_huge_jagged_lightblueore
       rect:
         serializedVersion: 2
         x: 278
