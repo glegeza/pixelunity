@@ -65,6 +65,7 @@ public class InfiniteSpawner : MonoBehaviour
     private List<Sprite> _asteroidSprites = new List<Sprite>();
     private List<GameObject> _asteroidPrefabs = new List<GameObject>();
     private float _timeSinceCull = 0.0f;
+    private float _distanceSqr;
 
 	private void Start ()
     {
@@ -86,7 +87,7 @@ public class InfiniteSpawner : MonoBehaviour
         _sizes.Add(new AsteroidSizeDescription("huge"));
 
         _shapes.Add(new AsteroidShapeDescription("round"));
-        //_shapes.Add(new AsteroidShapeDescription("oblong"));
+        _shapes.Add(new AsteroidShapeDescription("oblong"));
         //_shapes.Add(new AsteroidShapeDescription("jagged"));
 
         _types.Add(new AsteroidTypeDescription("blueore"));
@@ -101,6 +102,8 @@ public class InfiniteSpawner : MonoBehaviour
         _types.Add(new AsteroidTypeDescription("lightblue"));
         _types.Add(new AsteroidTypeDescription("lightblueore"));
         _types.Add(new AsteroidTypeDescription("lightgray"));
+
+        _distanceSqr = Mathf.Pow(MaxSpawnDistance, 2.0f);
 
         GeneratePool();
         PlaceAsteroids(true);
@@ -126,7 +129,7 @@ public class InfiniteSpawner : MonoBehaviour
     {
         foreach (var roid in _asteroids.Where(a => a.activeSelf))
         {
-            if (Vector2.Distance(Player.position, roid.transform.position) > MaxSpawnDistance)
+            if (Vector2.SqrMagnitude(roid.transform.position - Player.position) > _distanceSqr)
             {
                 Debug.Log("Clearing asteroid");
                 roid.SetActive(false);
@@ -192,7 +195,9 @@ public class InfiniteSpawner : MonoBehaviour
             }
         } while (!foundPlacement);
         var dirVec = UnityEngine.Random.insideUnitCircle.normalized;
+        var startAngle = UnityEngine.Random.Range(0.0f, 360.0f);
         asteroid.SetActive(true);
         asteroid.GetComponent<Rigidbody2D>().AddForce(dirVec * UnityEngine.Random.Range(1.0f, 5.0f), ForceMode2D.Impulse);
+        asteroid.transform.rotation = Quaternion.Euler(0.0f, 0.0f, startAngle);
     }
 }
