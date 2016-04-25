@@ -8,6 +8,7 @@ public class StarfieldGenerator : MonoBehaviour
     public int Padding = 2;
     public int Stars = 50;
     public Transform FollowTarget;
+    public bool Static;
 
     private int _width = 50;
     private int _height = 50;
@@ -52,6 +53,10 @@ public class StarfieldGenerator : MonoBehaviour
 
 	void Update ()
     {
+        if (Static)
+        {
+            return;
+        }
         var offset = new Vector2();
         offset.x = transform.position.x / transform.localScale.x / Parralax;
         offset.y = transform.position.y / transform.localScale.y / Parralax;
