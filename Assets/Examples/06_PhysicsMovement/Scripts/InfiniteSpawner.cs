@@ -7,11 +7,17 @@ public class InfiniteSpawner : MonoBehaviour
 {
     public class AsteroidSizeDescription
     {
-        public AsteroidSizeDescription(string str)
+        public AsteroidSizeDescription(string str, AsteroidSizeDescription chunkSize, int minChunks, int maxChunks)
         {
             SizeString = str;
+            ChunkSize = chunkSize;
+            MinChunks = minChunks;
+            MaxChunks = maxChunks;
         }
 
+        public AsteroidSizeDescription ChunkSize;
+        public int MinChunks;
+        public int MaxChunks;
         public string SizeString;
         public float Mass;
         public float LinearDrag;
@@ -81,10 +87,14 @@ public class InfiniteSpawner : MonoBehaviour
         _asteroidPrefabs.AddRange(prefabs.
             Where(p => p.name.Contains(AsteroidPrefix)));
 
-        _sizes.Add(new AsteroidSizeDescription("tiny"));
-        _sizes.Add(new AsteroidSizeDescription("small"));
-        _sizes.Add(new AsteroidSizeDescription("large"));
-        _sizes.Add(new AsteroidSizeDescription("huge"));
+        var tiny = new AsteroidSizeDescription("tiny", null, 0, 0);
+        var small = new AsteroidSizeDescription("small", tiny, 3, 5);
+        var large = new AsteroidSizeDescription("large", small, 2, 3);
+        var huge = new AsteroidSizeDescription("huge", large, 2, 2);
+        _sizes.Add(tiny);
+        _sizes.Add(small);
+        _sizes.Add(large);
+        _sizes.Add(huge);
 
         _shapes.Add(new AsteroidShapeDescription("round"));
         _shapes.Add(new AsteroidShapeDescription("oblong"));
@@ -109,9 +119,19 @@ public class InfiniteSpawner : MonoBehaviour
         PlaceAsteroids(true);
 	}
 
-    public void AddTemporaryAsteroid(GameObject newAsteroid)
+    public GameObject AddTemporaryAsteroid(GameObject asteroid)
     {
-        _tempAsteroids.Add(newAsteroid);
+        _tempAsteroids.Add(asteroid);
+        return asteroid;
+    }
+
+    public GameObject AddTemporaryAsteroid(AsteroidSizeDescription size, AsteroidTypeDescription type, AsteroidShapeDescription shape)
+    {
+        size = size ?? _sizes[UnityEngine.Random.Range(0, _sizes.Count)];
+        type = type ?? _types[UnityEngine.Random.Range(0, _types.Count)];
+        shape = shape ?? _shapes[UnityEngine.Random.Range(0, _shapes.Count)];
+        var newRoid = CreateAsteroid(size, type, shape);
+        return newRoid;
     }
 	
 	private void Update ()
@@ -147,15 +167,7 @@ public class InfiniteSpawner : MonoBehaviour
             var size = _sizes[UnityEngine.Random.Range(0, _sizes.Count)];
             var type = _types[UnityEngine.Random.Range(0, _types.Count)];
             var shape = _shapes[UnityEngine.Random.Range(0, _shapes.Count)];
-            var prefab_name = type.GetPrefabName(size, shape);
-            var sprite_name = type.GetSpriteName(size, shape);
-            var prefab = _asteroidPrefabs.Find(p => p.name == prefab_name);
-            var sprite = _asteroidSprites.Find(s => s.name == sprite_name);
-            var newRoid = Instantiate(prefab) as GameObject;
-            var spriteRenderer = newRoid.AddComponent<SpriteRenderer>();
-            spriteRenderer.sprite = sprite;
-            newRoid.SetActive(false);
-            _asteroids.Add(newRoid);
+            _asteroids.Add(CreateAsteroid(size, type, shape, false));
         }
     }
 
@@ -165,6 +177,25 @@ public class InfiniteSpawner : MonoBehaviour
         {
             PlaceAsteroid(roid, populate);
         }
+    }
+
+    private GameObject CreateAsteroid(AsteroidSizeDescription size, AsteroidTypeDescription type, AsteroidShapeDescription shape, bool active=true)
+    {
+        var prefab_name = type.GetPrefabName(size, shape);
+        var sprite_name = type.GetSpriteName(size, shape);
+        var prefab = _asteroidPrefabs.Find(p => p.name == prefab_name);
+        var sprite = _asteroidSprites.Find(s => s.name == sprite_name);
+        var newRoid = Instantiate(prefab) as GameObject;
+        var spriteRenderer = newRoid.AddComponent<SpriteRenderer>();
+        var data = newRoid.AddComponent<AsteroidData>();
+        newRoid.AddComponent<AsteroidKiller>();
+        newRoid.AddComponent<ClickKiller>();
+        data.AsteroidSizeType = size;
+        data.AsteroidType = type;
+        spriteRenderer.sprite = sprite;
+        spriteRenderer.material.shader = Shader.Find("Sprites/Diffuse");
+        newRoid.SetActive(active);
+        return newRoid;
     }
 
     private void PlaceAsteroid(GameObject asteroid, bool populate)
