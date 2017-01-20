@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System;
 
@@ -13,8 +13,7 @@ public class HexTileLayer : MonoBehaviour
     public List<GameObject> Tiles = new List<GameObject>();
 
     private PixelCameraScaler _scaler;
-
-    // Use this for initialization
+    
     void Start ()
     {
         _scaler = FindObjectOfType<PixelCameraScaler>();

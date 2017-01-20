@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 
 public class MouseObjectTracker : MonoBehaviour
@@ -41,7 +41,10 @@ public class MouseObjectTracker : MonoBehaviour
 
         if (CurrentObject && Input.GetMouseButtonDown(0))
         {
-            ObjectClicked(this, EventArgs.Empty);
+            if (ObjectClicked != null)
+            {
+                ObjectClicked(this, EventArgs.Empty);
+            }
         }
     }
 }

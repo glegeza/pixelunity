@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using Assets.Scripts;
 using System.IO;
 
@@ -43,7 +43,9 @@ public class PixelCameraScaler : MonoBehaviour
 
     public float FloorToPixelBoundary(float value)
     {
-        return (int)(value * PixelsPerUnit) / (float)PixelsPerUnit;
+        var unitsPerPixel = 1.0f / PixelsPerUnit;
+        var pixelPosition = Mathf.FloorToInt(value / unitsPerPixel);
+        return (float)pixelPosition / PixelsPerUnit;
     }
 
     public Vector2 RoundToPixelBoundary(Vector2 worldPos)
@@ -82,6 +84,8 @@ public class PixelCameraScaler : MonoBehaviour
 
     public void ForceUpdate()
     {
+        Debug.Log("---------------------------------------");
+        Debug.LogFormat("Updating pixel camera with Scale {0}", CurrentScale);
         UpdateCameras();
     }
 
@@ -181,11 +185,28 @@ public class PixelCameraScaler : MonoBehaviour
 
         var bestFitWidth = (int)(Scale * Mathf.Floor(Screen.width / (float)Scale));
         var bestFitHeight = (int)(Scale * Mathf.Floor(Screen.height / (float)Scale));
+
         var textureWidth = bestFitWidth / Scale;
         var textureHeight = bestFitHeight / Scale;
+
+        // HACK This fixes an issue with odd texture sizes. No idea why it's happening,
+        // so for now best fit sizes are just adjusted so that texture sizes are always
+        // even.
+        if (textureWidth % 2 != 0)
+        {
+            textureWidth -= 1;
+            bestFitWidth = textureWidth * Scale;
+        }
+        if (textureHeight % 2 != 0)
+        {
+            textureHeight -= 1;
+            bestFitHeight = textureHeight * Scale;
+        }
+
         CurrentScale = Scale;
         SetTexture(textureWidth, textureHeight);
         _pixelCamera.orthographicSize = ((float)textureHeight / PixelsPerUnit) / 2.0f;
+
         UpdateRenderQuad(bestFitWidth, bestFitHeight);
     }
 

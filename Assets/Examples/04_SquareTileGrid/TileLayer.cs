@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class TileLayer : MonoBehaviour
@@ -20,10 +20,14 @@ public class TileLayer : MonoBehaviour
 
     private void LayTiles()
     {
-        var xStart = _camera ? _camera.FloorToPixelBoundary(XStart) : XStart;
-        var yStart = _camera ? _camera.FloorToPixelBoundary(YStart) : YStart;
-        var xAdvance = _camera ? _camera.FloorToPixelBoundary(TileWidth) : TileWidth;
-        var yAdvance = _camera ? _camera.FloorToPixelBoundary(TileHeight) : TileHeight;
+        var xStart = XStart;
+        var yStart = YStart;
+        var xAdvance = TileWidth;
+        var yAdvance = TileHeight;
+        //var xStart = _camera ? _camera.FloorToPixelBoundary(XStart) : XStart;
+        //var yStart = _camera ? _camera.FloorToPixelBoundary(YStart) : YStart;
+        //var xAdvance = _camera ? _camera.FloorToPixelBoundary(TileWidth) : TileWidth;
+        //var yAdvance = _camera ? _camera.FloorToPixelBoundary(TileHeight) : TileHeight;
         for (var x = 0; x < GridWidth; x++)
         {
             for (var y = 0; y < GridHeight; y++)
@@ -32,7 +36,7 @@ public class TileLayer : MonoBehaviour
                 var yPos = y * yAdvance + yStart;
                 var nextTile = Instantiate(GetNextTile()) as GameObject;
                 nextTile.transform.position = new Vector3(
-                    xPos, yPos, nextTile.transform.position.z);
+                    (int)xPos, (int)yPos, nextTile.transform.position.z);
             }
         }
     }
